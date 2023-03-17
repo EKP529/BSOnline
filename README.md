@@ -29,3 +29,9 @@ imagination becomes **reality**!
 * Interactive display that shows the cards in your hand
 * Display shows what other players play in realtime 
 * Record of players' wins is kept
+
+## Startup Server URL:
+http://18.218.74.203/
+
+## SSH into Server:
+from within the CS 260 directory: <ssh -i production.pem ubuntu@18.218.74.203>
