@@ -20,7 +20,7 @@ imagination becomes **reality**!
 
 
 ## BSOnline Wireframes:
-![Image of the wireframes for the BSOnline startup application](BSOnline Wireframes.jpg)
+![Image of the wireframes for the BSOnline startup application](https://github.com/EKP529/startup/blob/a3ec7e592f9f222531413558f6caacf58c478807/BSOnline%20Wireframes.jpg)
 
 
 ## Key Features:
