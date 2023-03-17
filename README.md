@@ -20,7 +20,7 @@ imagination becomes **reality**!
 
 
 ## BSOnline Wireframes:
-![Image of the wireframes for the BSOnline startup application](/Users/ekp/Desktop/Desktop - Eden’s MacBook Pro/CS/CS 260/startup/BSOnline Wireframes.jpg)
+![Image of the wireframes for the BSOnline startup app](/Users/ekp/Desktop/Desktop - Eden’s MacBook Pro/CS/CS 260/startup/BSOnline Wireframes.jpg)
 
 
 ## Key Features:
