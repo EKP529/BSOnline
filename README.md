@@ -20,12 +20,12 @@ imagination becomes **reality**!
 
 
 ## BSOnline Wireframes:
-![Image of the wireframes for the BSOnline startup application](https://github.com/EKP529/startup/blob/a3ec7e592f9f222531413558f6caacf58c478807/BSOnline%20Wireframes.jpg)
+![Image of the wireframes for the BSOnline startup application](https://github.com/EKP529/startup/blob/78abc8bc7fff836a247af4a82151c49539de856a/BSOnline%20Wireframes.jpg)
 
 
 ## Key Features:
 * Secure login over HTTPS
-* Play a game with up to 4 people
+* Play a game with up to 8 people
 * Interactive display that shows the cards in your hand
 * Display shows what other players play in realtime 
 * Record of players' wins is kept
