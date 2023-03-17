@@ -34,4 +34,4 @@ imagination becomes **reality**!
 http://18.218.74.203/
 
 ## SSH into Server:
-from within the CS 260 directory: <ssh -i production.pem ubuntu@18.218.74.203>
+from within the CS 260 directory: `ssh -i production.pem ubuntu@18.218.74.203`
