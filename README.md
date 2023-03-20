@@ -34,7 +34,16 @@ imagination becomes **reality**!
 18.218.74.203
 
 ## Startup Server URL:
-http://4thecode.click
+https://4thecode.click
 
 ## SSH into Server:
 from within the CS 260 directory: `ssh -i production.pem ubuntu@18.218.74.203`
+
+## Notes on Simon.html(3/19):
+I was a bit worried about the complexity of adding pages to the website, but 
+through the simon.html code I learned that it is pretty straight forward. I 
+also learned, through the deployFile.sh code, about how to add different webpages for 
+different subdomains of my domain. I can do similar code for my startup depending 
+on my needs. The html files really are pretty simple and bare-bones and I learned 
+that the Javscript and CSS files are what really bring the webpages to life, though
+the HTML files are still essential.
