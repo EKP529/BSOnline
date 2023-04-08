@@ -1,10 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8" />
+    <!-- Tell browsers not to scale the viewport automatically -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BSOnline</title>
+    <!--  <link rel="icon" href="favicon.ico" />-->
 </head>
 <body>
-
+<!-- Use header, main, and footer elements to give semantic structure -->
+<header>
+    <table>
+        <tr>
+            <td>
+                <h1>BSOnline<sup>&reg;</sup></h1>
+                <!-- Navigation elements -->
+                <nav>
+                    <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
+                    <menu>
+                        <li><a href="lobby.html">New Game</a></li>
+                        <li><a href="playerWins.html">Player Wins</a></li>
+                    </menu>
+                </nav>
+            </td>
+            <td>
+                <form method="get" action="index.html">
+                    <button type="submit">Logout</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
+    <hr />
+</header>
+<main>
+    <p>
+        BSOnline is an online card game where players seek to be the first
+        to discard all the cards in their hand. Each player, in turn,
+        announces the card and the amount that they want to discard. During
+        a player's turn, each other player has 7 seconds to call that player's
+        bluff. After 7 seconds, if no call is made the player's discard is accepted
+        and the next player plays. If a player's bluff is correctly called that
+        player must assume all the cards in the pile, if the bluff is incorrectly
+        called, the calling player must pick up the pile. The game continues in this
+        manner until the first player discards all of their cards.
+    </p>
+</main>
+<footer>
+    <hr />
+    <span class="text-reset">Author Name(s)</span>
+    <br />
+    <a href="https://github.com/webprogramming260/simon-html">GitHub</a>
+</footer>
 </body>
 </html>
