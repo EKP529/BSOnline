@@ -47,3 +47,11 @@ different subdomains of my domain. I can do similar code for my startup dependin
 on my needs. The html files really are pretty simple and bare-bones and I learned 
 that the Javscript and CSS files are what really bring the webpages to life, though
 the HTML files are still essential.
+
+## Notes on Startup(4/8):
+Making the html files for the startup reminded me or further taught me how bare-bones
+html is. I had to remind myself that the imagery I'm envisioning for the startup app/website
+will be more realized once I learn more about and implement css for it. Making the html files
+also helped recognize the importance of keeping things simple and just nailing down my desired 
+structure and layout for the startup. It helped me lay a good foundation to build on once I get
+going with the css and, eventually, javascript.
