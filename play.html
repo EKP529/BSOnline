@@ -1,10 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8" />
+  <!-- Tell browsers not to scale the viewport automatically -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BSOnline</title>
+<!--  <link rel="icon" href="favicon.ico" />-->
 </head>
 <body>
+<!-- Use header, main, and footer elements to give semantic structure -->
+<header>
+  <table>
+    <tr>
+      <td>
+        <h1>BSOnline<sup>&reg;</sup></h1>
+      </td>
+      <td>
+        <form method="get" action="index.html">
+          <button type="submit">Logout</button>
+        </form>
+      </td>
+    </tr>
+  </table>
+  <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
+  <hr />
+</header>
 
+<main>
+  <!-- More formatting with old style HTML -->
+  <br />
+  <div>
+    <table>
+      <tr>
+        <td>
+          <div class="players">
+            <span class="player-name">Player 3</span>
+            <br/>
+            <span class="cards-in-hand">16 cards</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="players">
+            <span class="player-name">Player 2</span>
+            <br/>
+            <span class="cards-in-hand">10 cards</span>
+          </div>
+        </td>
+        <td>
+          <span> Seconds Left: 5</span>
+          <br/>
+          <span class="cards-in-hand">4 cards in pile</span>
+          <ul id="pile">
+            <!-- the space in the data-value string is important -->
+            <li data-value="J ♦">
+              <p data-suit="♦"><span>J</span><span>♦</span></p>
+            </li>
+            <li data-value="Q ♥">
+              <p data-suit="♥♣"><span>Q</span><span>♥</span></p>
+            </li>
+            <li data-value="K ♣">
+              <p data-suit="♣"><span>K</span><span>♣</span></p>
+            </li>
+            <li data-value="A ♠">
+              <p data-suit="♠"><span>A</span><span>♠</span></p>
+            </li>
+          </ul>
+          <span class="cards-in-hand">Attempted Discard:</span>
+          <br/>
+          <span>2 A's</span>
+        </td>
+        <td>
+          <div class="players">
+            <span class="player-name">Player 4</span>
+            <br/>
+            <span class="cards-in-hand">8 cards</span>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <br />
+  <br />
+  <div>
+  <button>BS!!!</button>
+  </div>
+  <br />
+  <br />
+  <div>
+    <ul id="hand">
+      <li data-value="A ♥">
+        <p data-suit="♥"><span>A</span><span>♥</span></p>
+      </li>
+      <li data-value="2 ♥">
+        <p data-suit="♥"><span>2</span><span>♥</span></p>
+      </li>
+      <li data-value="3 ♥">
+        <p data-suit="♥"><span>3</span><span>♥</span></p>
+      </li>
+      <li data-value="4 ♥">
+        <p data-suit="♥"><span>4</span><span>♥</span></p>
+      </li>
+      <li data-value="5 ♥">
+        <p data-suit="♥"><span>5</span><span>♥</span></p>
+      </li>
+      <li data-value="6 ♥">
+        <p data-suit="♥"><span>6</span><span>♥</span></p>
+      </li>
+      <li data-value="7 ♥">
+        <p data-suit="♥"><span>7</span><span>♥</span></p>
+      </li>
+      <li data-value="8 ♥">
+        <p data-suit="♥"><span>8</span><span>♥</span></p>
+      </li>
+      <li data-value="9 ♥">
+        <p data-suit="♥"><span>9</span><span>♥</span></p>
+      </li>
+      <li data-value="10 ♥">
+        <p data-suit="♥"><span>10</span><span>♥</span></p>
+      </li>
+      <li data-value="J ♥">
+        <p data-suit="♥"><span>J</span><span>♥</span></p>
+      </li>
+      <li data-value="Q ♥">
+        <p data-suit="♥"><span>Q</span><span>♦</span></p>
+      </li>
+      <li data-value="K ♥">
+        <p data-suit="♥"><span>K</span><span>♥</span></p>
+      </li>
+    </ul>
+  </div>
+  <br />
+  <br />
+  <div class="players">
+    <span class="player-name">Player 1</span>
+    <br/>
+    <span class="cards-in-hand">13 cards</span>
+  </div>
+  <br />
+  <br />
+  <form method="get" action="lobby.html">
+    <button type="submit">Leave Game</button>
+  </form>
+</main>
+
+<footer>
+  <hr />
+  <span class="text-reset">Author Name(s)</span>
+  <br />
+  <a href="https://github.com/EKP529/startup">GitHub</a>
+</footer>
 </body>
 </html>
