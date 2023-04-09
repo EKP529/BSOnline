@@ -3,7 +3,8 @@
     text-align: -webkit-center;
 }
 body{
-    background-color: #006e12;
+    background: #006e12 linear-gradient(to bottom,
+    #006e12, #0b494d);
 }
 #pile {
     width: 150px;
