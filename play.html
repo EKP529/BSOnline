@@ -31,11 +31,6 @@
   <!-- More formatting with old style HTML -->
   <br />
   <div>
-    <div class="game-info">
-      <span> Seconds Left: 7</span>
-      <br/>
-      <span class="cards-in-hand">4 cards in pile</span>
-    </div>
     <table>
       <tr>
         <td>
@@ -46,7 +41,7 @@
           </div>
         </td>
         <td>
-          <div class="players">
+          <div class="player-top">
             <span class="player-name">Player 3</span>
             <br/>
             <span class="cards-in-hand">16 cards</span>
@@ -66,10 +61,19 @@
               <p data-suit="♠"><span>A</span><span>♠</span></p>
             </li>
           </ul>
-          <div class="turn-info">
+          <div class="game-info">
+            <span style="-webkit-text-fill-color: #C00000FF"> Seconds Left: 7</span>
+            <br/>
+            <span class="cards-in-hand">4 cards in pile</span>
+            <br>
+            <br>
+            <span> Player 2's Turn:</span>
             <span class="cards-in-hand">Attempted Discard:</span>
             <br/>
             <span>2 A's</span>
+          </div>
+          <br>
+          <div class="turn-info">
           </div>
         </td>
         <td>
@@ -84,7 +88,13 @@
   </div>
   <br />
   <div>
-  <button>BS!!!</button>
+  <button class="BS">BS!!!</button>
+  </div>
+  <br>
+  <div class="player">
+    <span class="player-name">Player 1</span>
+    <br/>
+    <span class="cards-in-hand">13 cards</span>
   </div>
   <div>
     <ul id="hand">
@@ -129,14 +139,8 @@
       </li>
     </ul>
   </div>
-  <div class="player">
-    <span class="player-name">Player 1</span>
-    <br/>
-    <span class="cards-in-hand">13 cards</span>
-  </div>
-  <br />
   <form method="get" action="lobby.html">
-    <button type="submit">Leave Game</button>
+    <button type="submit" class="leave">Leave Game</button>
   </form>
   <br>
 </main>
