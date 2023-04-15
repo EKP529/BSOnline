@@ -1,11 +1,14 @@
 @charset "UTF-8";
 *{
     text-align: -webkit-center;
+    font-family: "Sedgwick Ave Display", serif;
 }
 body{
-    background: #006e12 linear-gradient(to bottom,
-    #006e12, #0b494d);
+    background: #006e12 linear-gradient(0, #00a11c, #8d0000);
+    /*background: #006e12 linear-gradient(0,*/
+    /*#00a11c, #137f86);*/
 }
+a{ color: darkturquoise; }
 #pile {
     width: 150px;
     height: 225px;
