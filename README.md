@@ -57,7 +57,7 @@ structure and layout for the startup. It helped me lay a good foundation to buil
 going with the css and, eventually, javascript.
 
 ## Notes on HTML(4/25):
-<ins>Element</ins>	  <u>Meaning</u>
+<ins>Element</ins>	  <ins>Meaning</ins>
 html	  The page container
 head	  Header information
 title	  Title of the page
