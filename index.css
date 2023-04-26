@@ -1,5 +1,4 @@
 *{
-    text-align: -webkit-center;
     font-family: "Sedgwick Ave Display", serif;
 }
 body{
@@ -19,11 +18,32 @@ main {
     align-items: center;
     justify-content: space-around;
 }
+menu {
+    flex: 1;
+    display: flex;
+    /*  overwrite Bootstrap so the menu does not wrap */
+    flex-direction: row !important;
+    list-style: none;
+}
 
 footer {
     flex: 0 30px;
 }
-a{ color: darkturquoise; }
+footer a {
+    float: right;
+    padding-right: 0.3em;
+}
+footer span {
+    float: left;
+    padding-left: 0.3em;
+}
+.navbar-brand {
+    padding-left: 0.3em;
+    border-bottom: solid white thin;
+}
+menu .nav-item {
+    padding: 0 0.3em;
+}
 
 @media (max-height: 600px) {
     header {
