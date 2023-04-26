@@ -56,38 +56,71 @@ also helped recognize the importance of keeping things simple and just nailing d
 structure and layout for the startup. It helped me lay a good foundation to build on once I get
 going with the css and, eventually, javascript.
 
-## Notes on HTML(4/25):
-<ins>Element</ins>	  <ins>Meaning</ins>
-* **html**	  The page container
-* **head**	  Header information
-* **title**	  Title of the page
-* **meta**	  Metadata for the page such as character set or viewport settings
-* **script**	  JavaScript reference. Either a external reference, or inline
-* **include**	  External content reference
-* **body**	  The entire content body of the page
-* **header**	  Header of the main content
-* **footer**	  Footer of the main content
-* **nav**	      Navigational inputs
-* **main**	  Main content of the page
-* **section**	  A section of the main content
-* **aside**	  Aside content from the main content
-* **div**	      A block division of content
-* **span**	  An inline span of content
-* **h<1-9>**	  Text heading. From h1, the highest level, down to h9, the lowest level
-* **p**	      A paragraph of text
-* **b**	      Bring attention
-* **table**	  Table
-* **tr**	      Table row
-* **th**	      Table header
-* **td**	      Table data
-* **ol,ul**	  Ordered or unordered list
-* **li**	      List item
-* **a**	      Anchor the text to a hyperlink
-* **img**	      Graphical image reference
-* **dialog**	  Interactive component such as a confirmation
-* **form**	  A collection of user input
-* **input**	  User input field
-* **audio**	  Audio content
-* **video**	  Video content
-* **svg**	      Scalable vector graphic content
-* **iframe**	  Inline frame of another HTML page
+## HTML Elements(4/25):
+| Element   | Meaning                                                                |
+|-----------|------------------------------------------------------------------------|
+| `html`    | The page container                                                     |
+| `head`    | Header information                                                     |
+| `title`   | Title of the page                                                      |
+| `meta`    | Metadata for the page such as character set or viewport settings       |
+| `script`  | JavaScript reference. Either a external reference, or inline           |
+| `include` | External content reference                                             |
+| `body`    | The entire content body of the page                                    |
+| `header`  | Header of the main content                                             |
+| `footer`  | Footer of the main content                                             |
+| `nav`     | Navigational inputs                                                    |
+| `main`    | Main content of the page                                               |
+| `section` | A section of the main content                                          |
+| `aside`   | Aside content from the main content                                    |
+| `div`     | A block division of content                                            |
+| `span`    | An inline span of content                                              |
+| `h<1-9>`  | Text heading. From h1, the highest level, down to h9, the lowest level |
+| `p`       | A paragraph of text                                                    |
+| `b`       | Bring attention                                                        |
+| `table`   | Table                                                                  |
+| `tr`      | Table row                                                              |
+| `th`      | Table header                                                           |
+| `td`      | Table data                                                             |
+| `ol`/`ul` | Ordered/unordered list                                                 |
+| `li`      | List item                                                              |
+| `a`       | Anchor the text to a hyperlink                                         |
+| `img`     | Graphical image reference                                              |
+| `dialog`  | Interactive component such as a confirmation                           |
+| `form`    | A collection of user input                                             |
+| `input`   | User input field                                                       |
+| `audio`   | Audio content                                                          |
+| `video`   | Video content                                                          |
+| `svg`     | Scalable vector graphic content                                        |
+| `iframe`  | Inline frame of another HTML page                                      |
+
+## Notes on CSS (4/25):
+The `flex` display layout is useful when you want to partition your application into 
+areas that responsively move around as the window resizes or the orientation changes.
+
+The `grid` display layout is useful when you want to display a group of child 
+elements in a responsive grid.
+
+## CSS Combinators (4/26):
+| Combinator       | Meaning                     | Example        | Description                                |
+|------------------|-----------------------------|----------------|--------------------------------------------|
+| Descendant       | A list of descendants       | `body section` | Any section that is a descendant of a body |
+| Child            | A list of direct children   | `section > p`  | Any p that is a direct child of a section  |
+| General sibling  | A list of siblings          | `p ~ div`      | Any p that has a div sibling               |
+| Adjacent sibling | A list of adjacent siblings | `p + div`      | Any p that has an adjacent div sibling     |
+
+## CSS Units (4/26):
+| Unit  | Description                                                      |
+|-------|------------------------------------------------------------------|
+| px    | The number of pixels                                             |
+| pt    | The number of points (1/72 of an inch)                           |
+| in    | The number of inches                                             |
+| cm    | The number of centimeters                                        |
+| %     | A percentage of the parent element                               |
+| em    | A multiplier of the width of the letter `m` in the parent's font |
+| rm    | A multiplier of the width of the letter `m` in the root's font   |
+| ex    | A multiplier of the height of the element's font                 |
+| vw    | A percentage of the viewport's width                             |
+| vh    | A percentage of the viewport's height                            |
+| vmin	 | A percentage of the viewport's smaller dimension                 |
+| vmax	 | A percentage of the viewport's larger dimension                  |
+
