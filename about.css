@@ -1,10 +1,64 @@
 *{
-    text-align: -webkit-center;
     font-family: "Sedgwick Ave Display", serif;
 }
 body{
     background: #006e12 linear-gradient(0, #00a11c, #8d0000);
-    /*background: #006e12 linear-gradient(to bottom,*/
-    /*#00a11c, #137f86);*/
+    display: flex;
+    flex-direction: column;
+    min-width: 375px;
 }
-a{ color: darkturquoise; }
+header {
+    flex: 0 80px;
+}
+header menu {
+    flex: 1;
+    display: flex;
+    /*  overwrite Bootstrap so the menu does not wrap */
+    flex-direction: row !important;
+    list-style: none;
+}
+
+main {
+    flex: 1 calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+main div{
+    width: 60vw;
+}
+main h2{
+    border-bottom: solid white thin;
+    border-radius: 60vw;
+}
+footer {
+    flex: 0 40px;
+}
+footer a {
+    float: right;
+    padding-right: 0.3em;
+}
+footer span {
+    float: left;
+    padding-left: 0.3em;
+}
+.navbar-brand {
+    padding-left: 0.3em;
+    border-bottom: solid white thin;
+}
+menu .nav-item {
+    padding: 0 0.3em;
+}
+
+@media (max-height: 600px) {
+    header {
+        display: none;
+    }
+    footer {
+        display: none;
+    }
+    main {
+        flex: 1 100vh;
+    }
+}

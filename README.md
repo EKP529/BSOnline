@@ -2,13 +2,10 @@
 The startup application for CS 260; BSOnline
 
 
-
-
 ## Notes(3/16): 
 I learned a bit more about Git and GitHub and made some conflicting changes
 that I fixed. I'm more comfortable with GitHub now, but it still may take some getting used to
 as well as some further improvement which will come as I go along.
-
 
 ## Elevator Pitch for BSOnline: 
 Everyone’s cards are up and against their chests. Deception is in 
@@ -18,10 +15,8 @@ to pay.** What will you do? This is **BS**! Perhaps you’ve played the card gam
 fun went _digital_, and you could play with friends from your laptop or phone? With **BSOnline**, that 
 imagination becomes **reality**!
 
-
 ## BSOnline Wireframes:
 ![Image of the wireframes for the BSOnline startup application](https://github.com/EKP529/startup/blob/78abc8bc7fff836a247af4a82151c49539de856a/BSOnline%20Wireframes.jpg)
-
 
 ## Key Features:
 * Secure login over HTTPS
@@ -39,7 +34,7 @@ https://4thecode.click
 ## SSH into Server:
 from within the CS 260 directory: `ssh -i production.pem ubuntu@18.218.74.203`
 
-## Notes on Simon.html(3/19):
+## Notes (3/19):
 I was a bit worried about the complexity of adding pages to the website, but 
 through the simon.html code I learned that it is pretty straight forward. I 
 also learned, through the deployFile.sh code, about how to add different webpages for 
@@ -48,7 +43,7 @@ on my needs. The html files really are pretty simple and bare-bones and I learne
 that the Javscript and CSS files are what really bring the webpages to life, though
 the HTML files are still essential.
 
-## Notes on Startup(4/8):
+## Notes (4/8):
 Making the html files for the startup reminded me or further taught me how bare-bones
 html is. I had to remind myself that the imagery I'm envisioning for the startup app/website
 will be more realized once I learn more about and implement css for it. Making the html files
@@ -93,7 +88,7 @@ going with the css and, eventually, javascript.
 | `svg`     | Scalable vector graphic content                                        |
 | `iframe`  | Inline frame of another HTML page                                      |
 
-## Notes on CSS (4/25):
+## Notes (4/25):
 The `flex` display layout is useful when you want to partition your application into 
 areas that responsively move around as the window resizes or the orientation changes.
 
@@ -124,3 +119,5 @@ elements in a responsive grid.
 | vmin	 | A percentage of the viewport's smaller dimension                 |
 | vmax	 | A percentage of the viewport's larger dimension                  |
 
+## Notes(4/27):
+* `&nbsp`; non-breaking space
