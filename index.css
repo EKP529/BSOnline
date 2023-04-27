@@ -24,7 +24,16 @@ main {
     align-items: center;
     justify-content: space-around;
 }
-
+main input{
+    margin: 0.5em;
+}
+main h2{
+    font-size: 4em;
+}
+main p{
+    border-bottom: solid white thin;
+    border-radius: 30vw;
+}
 footer {
     flex: 0 40px;
 }
