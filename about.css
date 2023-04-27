@@ -19,21 +19,29 @@ header menu {
 }
 
 main {
-    flex: 1 calc(100vh - 120px);
+    flex: 1 calc(100vh - 110px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
 }
 main div{
-    width: 60vw;
+    display: flex;
+    flex: 0;
+    flex-direction: column;
+    align-items: center;
 }
 main h2{
+    font-size: 4em;
     border-bottom: solid white thin;
-    border-radius: 60vw;
+    border-radius: 1.5vw;
+    width: 35vw;
+}
+main p{
+    width: 50vw;
 }
 footer {
-    flex: 0 40px;
+    flex: 0 30px;
 }
 footer a {
     float: right;

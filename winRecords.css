@@ -18,21 +18,21 @@ header menu {
     list-style: none;
 }
 main {
-    flex: 1 calc(100vh - 120px);
+    flex: 1 calc(100vh - 110px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
 }
-main div{
-    width: 50vw;
-}
 main h2{
+    font-size: 4em;
     border-bottom: solid white thin;
-    border-radius: 50vw;
+    border-radius: 1.5vw;
+    width: 30vw;
+    margin-bottom: 0.5em;
 }
 footer {
-    flex: 0 40px;
+    flex: 0 30px;
 }
 footer a {
     float: right;
