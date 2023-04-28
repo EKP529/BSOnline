@@ -122,3 +122,13 @@ elements in a responsive grid.
 ## Notes(4/27):
 * `&nbsp`; non-breaking space
 * use `div` and `flex` together to center things easier
+
+## CSS Common Display Options (4/28):
+| Value  | Meaning                                                                                                                  |
+|--------|--------------------------------------------------------------------------------------------------------------------------|
+| none   | Don't display this element. The element still exists, but the browser will not render it.                                |
+| block  | Display this element with a width that fills its parent element. A p or div element has block display by default.        |
+| inline | Display this element with a width that is only as big as its content. A b or span element has inline display by default. |
+| flex   | Display this element's children in a flexible orientation.                                                               |
+| grid   | Display this element's children in a grid orientation.                                                                   |
+

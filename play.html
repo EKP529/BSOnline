@@ -15,7 +15,7 @@
   </head>
   <body class="bg-light">
     <!-- Use header, main, and footer elements to give semantic structure -->
-    <header class="bg-dark container-fluid">
+    <header class="bg-dark container-fluid text-center">
       <nav class="navbar navbar-dark">
         <a class="navbar-brand" href="index.html">BSOnline<sup>&reg;</sup></a>
       </nav>
@@ -27,7 +27,7 @@
             <tr>
               <td>
                 <div class="left-players">
-                  <div class="player2">
+                  <div class="player-info">
                     <span class="player-name">Player 2</span>
                     <br/>
                     <span class="cards-in-hand">10 cards</span>
@@ -35,26 +35,30 @@
                 </div>
               </td>
               <td>
-                <div class="top-player">
-                  <span class="player-name">Player 3</span>
-                  <br/>
-                  <span class="cards-in-hand">16 cards</span>
+                <div class="top-players">
+                  <div class="player-info">
+                    <span class="player-name">Player 3</span>
+                    <br/>
+                    <span class="cards-in-hand">16 cards</span>
+                  </div>
                 </div>
-                <ul id="pile">
-                  <!-- the space in the data-value string is important -->
-                  <li data-value="J ♦">
-                    <p data-suit="♦"><span>J</span><span>♦</span></p>
-                  </li>
-                  <li data-value="Q ♥">
-                    <p data-suit="♥"><span>Q</span><span>♥</span></p>
-                  </li>
-                  <li data-value="K ♣">
-                    <p data-suit="♣"><span>K</span><span>♣</span></p>
-                  </li>
-                  <li data-value="A ♠">
-                    <p data-suit="♠"><span>A</span><span>♠</span></p>
-                  </li>
-                </ul>
+                <div class="pile">
+                  <ul id="pile">
+                    <!-- the space in the data-value string is important -->
+                    <li data-value="J ♦">
+                      <p data-suit="♦"><span>J</span><span>♦</span></p>
+                    </li>
+                    <li data-value="Q ♥">
+                      <p data-suit="♥"><span>Q</span><span>♥</span></p>
+                    </li>
+                    <li data-value="K ♣">
+                      <p data-suit="♣"><span>K</span><span>♣</span></p>
+                    </li>
+                    <li data-value="A ♠">
+                      <p data-suit="♠"><span>A</span><span>♠</span></p>
+                    </li>
+                  </ul>
+                </div>
                 <div class="game-info">
                   <span style="-webkit-text-fill-color: #C00000FF"> Seconds Left: 7</span>
                   <br/>
@@ -72,7 +76,7 @@
               </td>
               <td>
                 <div class="right-players">
-                  <div class="player3">
+                  <div class="player-info">
                     <span class="player-name">Player 4</span>
                     <br/>
                     <span class="cards-in-hand">8 cards</span>
@@ -86,9 +90,6 @@
           <button class="BS">BS!!!</button>
         </div>
         <div class="player">
-          <span class="player-name">Player 1</span>
-          <br/>
-          <span class="cards-in-hand">13 cards</span>
           <div class="player-cards">
             <ul id="hand">
               <li data-value="A ♠">
@@ -132,11 +133,16 @@
               </li>
             </ul>
           </div>
+          <div class="player-info">
+            <span class="player-name">Player 1</span>
+            <br/>
+            <span class="cards-in-hand">13 cards</span>
+          </div>
         </div>
+        <form method="get" action="lobby.html">
+          <button type="submit" class="btn btn-light btn-outline-danger">Leave Game</button>
+        </form>
       </div>
-      <form method="get" action="lobby.html">
-        <button type="submit" class="leave">Leave Game</button>
-      </form>
     </main>
     <footer class="bg-dark text-muted">
       <div class="container-fluid text-light">
