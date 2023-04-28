@@ -8,7 +8,7 @@ body{
     min-width: 375px;
 }
 header {
-    flex: 0 80px;
+    flex: 0 60px;
 }
 main {
     flex: 1 calc(145vh - 110px);
@@ -28,8 +28,14 @@ footer span {
     float: left;
     padding-left: 0.3em;
 }
+.navbar{
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
 .navbar-brand {
-    text-align: center;
     padding-left: 0.3em;
     border-bottom: solid white thin;
 }
@@ -42,6 +48,9 @@ footer span {
     }
     main {
         flex: 1 100vh;
+    }
+    .top-players{
+        position: relative; top: 0;
     }
 }
 #pile {
@@ -57,14 +66,13 @@ footer span {
     border: black solid thin;
 }
 .left-players{
-    position: absolute; left: 0;
+    position: absolute; left: 1px; top: 55vh;
 }
 .right-players{
-    position: absolute; right: 0;
+    position: absolute; right: 1px; top: 55vh;
 }
 .top-players{
-    position: absolute; top: 80px;
-    margin-bottom: 150px;
+    position: relative; top: 1px;
 }
 .player{
     display: flex;
@@ -76,6 +84,11 @@ footer span {
     flex-direction: column;
     align-items: center;
 }
+.game-column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .game-info{
     margin-top: 80px;
     box-sizing: border-box;
@@ -83,13 +96,21 @@ footer span {
     height: 150px;
     background-color: #fff5f1;
 }
-.BS{
+.game-info .important{
+    -webkit-text-fill-color: #C00000FF;
+}
+.pile{
+    margin-top: 100px;
+}
+.BS .btn{
     height: 60px;
     width: 200px;
     margin-bottom: 50px;
+    margin-top: 25px;
 }
-.game .btn{
-    margin-top: 50px;
+form .btn{
+    margin-top: 100px;
+    margin-bottom: 50px;
     height: 40px;
     width: 120px;
 }
