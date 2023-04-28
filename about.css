@@ -34,8 +34,8 @@ main div{
 main h2{
     font-size: 4em;
     border-bottom: solid white thin;
-    border-radius: 1.5vw;
-    width: 35vw;
+    border-radius: 50px;
+    width: 350px;
 }
 main p{
     width: 50vw;

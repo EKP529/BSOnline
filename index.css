@@ -18,7 +18,7 @@ header menu {
     list-style: none;
 }
 main {
-    flex: 1 calc(100vh - 110px);
+    flex: 1 calc(120vh - 110px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,8 +36,8 @@ main div{
 main h2{
     font-size: 4em;
     border-bottom: solid white thin;
-    border-radius: 1.5vw;
-    width: 25vw;
+    border-radius: 50px;
+    width: 300px;
 }
 main p{
     margin: 0.75em;
