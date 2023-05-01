@@ -132,3 +132,18 @@ elements in a responsive grid.
 | flex   | Display this element's children in a flexible orientation.                                                               |
 | grid   | Display this element's children in a grid orientation.                                                                   |
 
+## Notes(5/1):
+What I learned from the CSS Startup deliverable:
+* I learned what the `calc()` does for values
+* I learned about bootstrap limitations and debugging kinks in its use and overwriting
+* I learned about display kinks between desktop/laptop and mobile; I had to change the units I used
+in order to accommodate both mobile and desktop views
+
+## Navigation Controls (5/1):
+| Navigation Controls | Description                                           |
+|---------------------|-------------------------------------------------------|
+| App controls        | User settings, payment, and help controls             |
+| Device controls     | Device specific controls such as back, next, and home |
+| Breadcrumb          | A path of the user's walk through the application     |
+| Common actions      | Direct links to locations based on the current view   |
+
