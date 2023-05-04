@@ -131,5 +131,5 @@ limitations
 ## Notes(5/3):
 * [Internationalization](https://www.w3.org/standards/webdesign/i18n)
 
-## Notes(5/4):s
+## Notes(5/4):
 * [JS Events](https://developer.mozilla.org/en-US/docs/Web/Events)
