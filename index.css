@@ -27,7 +27,7 @@ main {
 main input{
     margin: 0.5em;
 }
-main div{
+main > div{
     display: flex;
     flex: 0 100px;
     flex-direction: column;
