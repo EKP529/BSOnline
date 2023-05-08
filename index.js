@@ -1,6 +1,7 @@
+localStorage.setItem('loggedIn', 'f');
+
 let usernameEl;
 let passwordEL;
-localStorage.setItem('loggedIn', 'f');
 
 function checkInputs() {
     usernameEl = document.querySelector("#username");
