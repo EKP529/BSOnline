@@ -26,57 +26,45 @@
       <div class="game">
         <div class="game-table">
           <div class="left-players">
-            <div class="player-info">
-              <span class="player-name">Player 2</span>
+            <div class="player-info" id="player2">
+              <span class="player-name"></span>
               <br/>
-              <span class="cards-in-hand">10 cards</span>
+              <span class="cards-in-hand"></span>
             </div>
           </div>
           <div class="game-column">
             <div class="top-players">
-              <div class="player-info">
-                <span class="player-name">Player 3</span>
+              <div class="player-info" id="player3">
+                <span class="player-name"></span>
                 <br/>
-                <span class="cards-in-hand">16 cards</span>
+                <span class="cards-in-hand"></span>
               </div>
             </div>
             <div class="pile">
               <ul id="pile">
                 <!-- the space in the data-value string is important -->
-                <li data-value="J ♦">
-                  <p data-suit="♦"><span>J</span><span>♦</span></p>
-                </li>
-                <li data-value="Q ♥">
-                  <p data-suit="♥"><span>Q</span><span>♥</span></p>
-                </li>
-                <li data-value="K ♣">
-                  <p data-suit="♣"><span>K</span><span>♣</span></p>
-                </li>
-                <li data-value="A ♠">
-                  <p data-suit="♠"><span>A</span><span>♠</span></p>
-                </li>
               </ul>
             </div>
             <div class="game-info">
-              <span class="important"> Seconds Left: 7</span>
-              <br/>
-              <span class="cards-in-hand">4 cards in pile</span>
-              <br>
-              <br>
-              <span> Player 2's Turn:</span>
-              <span class="cards-in-hand">Attempted Discard:</span>
-              <br/>
-              <span>2 A's</span>
+<!--              <span class="important"> Seconds Left: 7</span>-->
+<!--              <br/>-->
+<!--              <span class="cards-in-hand">4 cards in pile</span>-->
+<!--              <br>-->
+<!--              <br>-->
+<!--              <span> Player 2's Turn:</span>-->
+<!--              <span class="cards-in-hand">Attempted Discard:</span>-->
+<!--              <br/>-->
+<!--              <span>2 A's</span>-->
             </div>
             <br>
             <div class="turn-info">
             </div>
           </div>
           <div class="right-players">
-            <div class="player-info">
-              <span class="player-name">Player 4</span>
+            <div class="player-info" id="player4">
+              <span class="player-name"></span>
               <br/>
-              <span class="cards-in-hand">8 cards</span>
+              <span class="cards-in-hand"></span>
             </div>
           </div>
         </div>
@@ -86,53 +74,15 @@
         <div class="player">
           <div class="player-cards">
             <ul id="hand">
-              <li data-value="A ♠">
-                <p data-suit="♠"><span>A</span><span>♠</span></p>
-              </li>
-              <li data-value="2 ♥">
-                <p data-suit="♥"><span>2</span><span>♥</span></p>
-              </li>
-              <li data-value="3 ♦">
-                <p data-suit="♦"><span>3</span><span>♦</span></p>
-              </li>
-              <li data-value="4 ♠">
-                <p data-suit="♠"><span>4</span><span>♠</span></p>
-              </li>
-              <li data-value="5 ♥">
-                <p data-suit="♥"><span>5</span><span>♥</span></p>
-              </li>
-              <li data-value="6 ♥">
-                <p data-suit="♥"><span>6</span><span>♥</span></p>
-              </li>
-              <li data-value="7 ♥">
-                <p data-suit="♥"><span>7</span><span>♥</span></p>
-              </li>
-              <li data-value="8 ♠">
-                <p data-suit="♠"><span>8</span><span>♠</span></p>
-              </li>
-              <li data-value="9 ♥">
-                <p data-suit="♥"><span>9</span><span>♥</span></p>
-              </li>
-              <li data-value="10 ♦">
-                <p data-suit="♦"><span>10</span><span>♦</span></p>
-              </li>
-              <li data-value="J ♦">
-                <p data-suit="♦"><span>J</span><span>♦</span></p>
-              </li>
-              <li data-value="Q ♠">
-                <p data-suit="♠"><span>Q</span><span>♠</span></p>
-              </li>
-              <li data-value="K ♠">
-                <p data-suit="♠"><span>K</span><span>♠</span></p>
-              </li>
+                <!-- the space in the data-value string is important -->
             </ul>
           </div>
           <br>
           <br>
-          <div class="player-info">
-            <span class="player-name">Player 1</span>
+          <div class="player-info" id="player1">
+            <span class="player-name"></span>
             <br/>
-            <span class="cards-in-hand">13 cards</span>
+            <span class="cards-in-hand"></span>
           </div>
         </div>
         <form method="get" action="lobby.html">
@@ -146,10 +96,6 @@
         <a href="https://github.com/EKP529/startup">GitHub</a>
       </div>
     </footer>
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous">
-    </script>
+    <script src="play.js"></script>
   </body>
 </html>
