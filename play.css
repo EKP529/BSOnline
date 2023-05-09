@@ -115,15 +115,15 @@ form .btn{
     width: 120px;
 }
 
-#pile > LI {
+#pile > li {
     position: absolute;
     text-align: left;
 }
 #hand {
-    width: 450px;
-    height: 250px;
+    width: 150px;
+    height: 225px;
 }
-#hand > LI {
+#hand > li {
     position: absolute;
     text-align: left;
     -moz-transition: top 0.5s ease 0.1s;
@@ -132,59 +132,46 @@ form .btn{
     -webkit-transition-delay: 0.1s;
     transition: top 0.5s ease 0.1s;
 }
-#hand > LI:nth-child(1) {
-    -ms-transform: translate(0em, 16px) rotate(-40deg);
+#hand > li:nth-child(1) {
     transform: translate(0em, 16px) rotate(-40deg);
 }
-#hand > LI:nth-child(2) {
-    -ms-transform: translate(1.6em, 11px) rotate(-34deg);
+#hand > li:nth-child(2) {
     transform: translate(1.6em, 11px) rotate(-34deg);
 }
-#hand > LI:nth-child(3) {
-    -ms-transform: translate(3.2em, 7px) rotate(-28deg);
+#hand > li:nth-child(3) {
     transform: translate(3.2em, 7px) rotate(-28deg);
 }
-#hand > LI:nth-child(4) {
-    -ms-transform: translate(4.8em, 4px) rotate(-22deg);
+#hand > li:nth-child(4) {
     transform: translate(4.8em, 4px) rotate(-22deg);
 }
-#hand > LI:nth-child(5) {
-    -ms-transform: translate(6.4em, 2px) rotate(-16deg);
+#hand > li:nth-child(5) {
     transform: translate(6.4em, 2px) rotate(-16deg);
 }
-#hand > LI:nth-child(6) {
-    -ms-transform: translate(8em, 1px) rotate(-10deg);
+#hand > li:nth-child(6) {
     transform: translate(8em, 1px) rotate(-10deg);
 }
-#hand > LI:nth-child(7) {
-    -ms-transform: translate(9.6em, 1px) rotate(-4deg);
+#hand > li:nth-child(7) {
     transform: translate(9.6em, 1px) rotate(-4deg);
 }
-#hand > LI:nth-child(8) {
-    -ms-transform: translate(11.2em, 2px) rotate(2deg);
+#hand > li:nth-child(8) {
     transform: translate(11.2em, 2px) rotate(2deg);
 }
-#hand > LI:nth-child(9) {
-    -ms-transform: translate(12.8em, 4px) rotate(8deg);
+#hand > li:nth-child(9) {
     transform: translate(12.8em, 4px) rotate(8deg);
 }
-#hand > LI:nth-child(10) {
-    -ms-transform: translate(14.4em, 7px) rotate(14deg);
+#hand > li:nth-child(10) {
     transform: translate(14.4em, 7px) rotate(14deg);
 }
-#hand > LI:nth-child(11) {
-    -ms-transform: translate(16em, 11px) rotate(20deg);
+#hand > li:nth-child(11) {
     transform: translate(16em, 11px) rotate(20deg);
 }
-#hand > LI:nth-child(12) {
-    -ms-transform: translate(17.6em, 16px) rotate(26deg);
+#hand > li:nth-child(12) {
     transform: translate(17.6em, 16px) rotate(26deg);
 }
-#hand > LI:nth-child(13) {
-    -ms-transform: translate(19.2em, 22px) rotate(32deg);
+#hand > li:nth-child(13) {
     transform: translate(19.2em, 22px) rotate(32deg);
 }
-#hand > LI:hover {
+#hand > li:active {
     left: 0;
     top: -40px;
     cursor: pointer;
@@ -207,7 +194,7 @@ form .btn{
     position: relative;
     margin: 5% auto 10%;
 }
-#pile > LI, #hand > LI {
+#pile > li, #hand > li {
     top: 0;
     left: 0;
     list-style: none;
@@ -229,24 +216,24 @@ form .btn{
     transform: translateZ(0);
 }
 
-#pile > LI[data-value],
-#hand > LI[data-value] {
+#pile > li[data-value],
+#hand > li[data-value] {
     overflow: hidden;
 }
-#pile > LI[data-value*='♣'][data-value],
-#hand > LI[data-value*='♣'][data-value],
-#pile > LI[data-value*='♠'][data-value],
-#hand > LI[data-value*='♠'][data-value] {
+#pile > li[data-value*='♣'][data-value],
+#hand > li[data-value*='♣'][data-value],
+#pile > li[data-value*='♠'][data-value],
+#hand > li[data-value*='♠'][data-value] {
     color: #222;
 }
-#pile > LI[data-value*='♦'][data-value],
-#hand > LI[data-value*='♦'][data-value],
-#pile > LI[data-value*='♥'][data-value],
-#hand > LI[data-value*='♥'][data-value] {
+#pile > li[data-value*='♦'][data-value],
+#hand > li[data-value*='♦'][data-value],
+#pile > li[data-value*='♥'][data-value],
+#hand > li[data-value*='♥'][data-value] {
     color: #a00;
 }
-#hand > LI[data-value]:before,
-#hand > LI[data-value]:after
+#hand > li[data-value]:before,
+#hand > li[data-value]:after
 {
     content: attr(data-value);
     width: 1em;
@@ -256,29 +243,29 @@ form .btn{
     margin-top: 4%;
     margin-left: 0;
 }
-#pile > LI[data-value]:after,
-#hand > LI[data-value]:after {
+#pile > li[data-value]:after,
+#hand > li[data-value]:after {
     right: 0;
     bottom: 4%;
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
 }
-#pile > LI[data-value] > P,
-#hand > LI[data-value] > P {
+#pile > li[data-value] > P,
+#hand > li[data-value] > P {
     display: block;
     width: 100%;
     height: 100%;
     font-size: 4rem;
 }
-#pile > LI[data-value] > P > SPAN:first-child,
-#hand > LI[data-value] > P > SPAN:first-child {
+#pile > li[data-value] > P > SPAN:first-child,
+#hand > li[data-value] > P > SPAN:first-child {
     display: none;
 }
-#pile > LI:not([data-value]) > P {
+#pile > li:not([data-value]) > P {
 
 }
-#hand> LI > P,
-#pile > LI > P {
+#hand> li > P,
+#pile > li > P {
     width: 90%;
     height: 92%;
     margin: 5% auto 0;
@@ -288,32 +275,32 @@ form .btn{
     -webkit-border-radius: 7px;
     border-radius: 7px;
 }
-#pile > LI[data-value^='J'][data-value] > P,
-#hand > LI[data-value^='J'][data-value] > P,
-#pile > LI[data-value^='Q'][data-value] > P,
-#hand > LI[data-value^='Q'][data-value] > P,
-#pile > LI[data-value^='K'][data-value] > P,
-#hand > LI[data-value^='K'][data-value] > P,
-#pile > LI[data-value^='A'][data-value] > P,
-#hand > LI[data-value^='A'][data-value] > P,
-#pile > LI[data-value^='2'][data-value] > P,
-#hand > LI[data-value^='2'][data-value] > P,
-#pile > LI[data-value^='3'][data-value] > P,
-#hand > LI[data-value^='3'][data-value] > P,
-#pile > LI[data-value^='4'][data-value] > P,
-#hand > LI[data-value^='4'][data-value] > P,
-#pile > LI[data-value^='5'][data-value] > P,
-#hand > LI[data-value^='5'][data-value] > P,
-#pile > LI[data-value^='6'][data-value] > P,
-#hand > LI[data-value^='6'][data-value] > P,
-#pile > LI[data-value^='7'][data-value] > P,
-#hand > LI[data-value^='7'][data-value] > P,
-#pile > LI[data-value^='8'][data-value] > P,
-#hand > LI[data-value^='8'][data-value] > P,
-#pile > LI[data-value^='9'][data-value] > P,
-#hand > LI[data-value^='9'][data-value] > P,
-#pile > LI[data-value^='10'][data-value] > P,
-#hand > LI[data-value^='10'][data-value] > P
+#pile > li[data-value^='J'][data-value] > P,
+#hand > li[data-value^='J'][data-value] > P,
+#pile > li[data-value^='Q'][data-value] > P,
+#hand > li[data-value^='Q'][data-value] > P,
+#pile > li[data-value^='K'][data-value] > P,
+#hand > li[data-value^='K'][data-value] > P,
+#pile > li[data-value^='A'][data-value] > P,
+#hand > li[data-value^='A'][data-value] > P,
+#pile > li[data-value^='2'][data-value] > P,
+#hand > li[data-value^='2'][data-value] > P,
+#pile > li[data-value^='3'][data-value] > P,
+#hand > li[data-value^='3'][data-value] > P,
+#pile > li[data-value^='4'][data-value] > P,
+#hand > li[data-value^='4'][data-value] > P,
+#pile > li[data-value^='5'][data-value] > P,
+#hand > li[data-value^='5'][data-value] > P,
+#pile > li[data-value^='6'][data-value] > P,
+#hand > li[data-value^='6'][data-value] > P,
+#pile > li[data-value^='7'][data-value] > P,
+#hand > li[data-value^='7'][data-value] > P,
+#pile > li[data-value^='8'][data-value] > P,
+#hand > li[data-value^='8'][data-value] > P,
+#pile > li[data-value^='9'][data-value] > P,
+#hand > li[data-value^='9'][data-value] > P,
+#pile > li[data-value^='10'][data-value] > P,
+#hand > li[data-value^='10'][data-value] > P
 {
     width: 65%;
     height: 80%;

@@ -125,6 +125,7 @@ class Game {
     _deck;
     _pile;
     _players = [];
+    _currPlayer;
 
     constructor() {
         this._deck = new Deck();
@@ -159,21 +160,31 @@ class Game {
 
         //show player's cards
         for (const card of this._players[0].hand) {
-            const cardInHandEl = document.createElement('li');
-            cardInHandEl.setAttribute('data-value', `${card.num} ${card.suit}`);
-            const pEl = document.createElement('p');
-            pEl.setAttribute('data-suit', `${card.suit}`);
-            const numEl = document.createElement('span');
-            numEl.textContent = `${card.num}`;
-            const suitEl = document.createElement('span');
-            suitEl.textContent = `${card.suit}`;
-            pEl.appendChild(numEl);
-            pEl.appendChild(suitEl);
-            cardInHandEl.appendChild(pEl);
-            const parentEl = document.getElementById('hand');
-            parentEl.appendChild(cardInHandEl);
+            this._displayCard(card, 'hand');
         }
     }
+
+    _displayCard(card, parentId) {
+        const cardInHandEl = document.createElement('li');
+        // cardInHandEl.style.transform
+        cardInHandEl.setAttribute('data-value', `${card.num} ${card.suit}`);
+        const pEl = document.createElement('p');
+        pEl.setAttribute('data-suit', `${card.suit}`);
+        const numEl = document.createElement('span');
+        numEl.textContent = `${card.num}`;
+        const suitEl = document.createElement('span');
+        suitEl.textContent = `${card.suit}`;
+        pEl.appendChild(numEl);
+        pEl.appendChild(suitEl);
+        cardInHandEl.appendChild(pEl);
+        const parentEl = document.getElementById(parentId);
+        parentEl.appendChild(cardInHandEl);
+    }
+
+    play() {}
+    playerPlay() {}
+    computerPlay() {}
+    updatePlayerCards() {}
 }
 
 const game = new Game();
