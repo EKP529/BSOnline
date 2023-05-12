@@ -161,11 +161,8 @@ class Game {
         }
 
         //show player's cards
-        for (const card of this._players[0].hand) {
-            this._displayCardInHand(card);
-        }
+        this.updateHand();
     }
-
     play() {
         if (this._currPlayer === 0) {
             this.playerPlay(this._players[0]);
@@ -174,7 +171,8 @@ class Game {
             this.computerPlay(this._players[this._currPlayer]);
         }
         if (this._players[this._currPlayer].numCardsInHand() === 0) {
-            this._gameOver = true;
+            this.endGame();
+            return;
         }
         this._currPlayer = ((this._currPlayer++) % this._players.length);
     }
@@ -182,12 +180,18 @@ class Game {
         let btn = this._displayPlayBtn(player);
         btn.onclick = () => {
             let cards = document.querySelectorAll('li.selected');
-            const parentEl = document.getElementById('pile');
+            const pile = document.getElementById('pile');
             let i = 0;
             for (const card of cards) {
                 card.style.transform = `translate(${2*(i++)}px)`;
-                parentEl.appendChild(card);
+                pile.appendChild(card);
+                const index = card.getAttribute('index');
+                delete player.hand[+index];
             }
+            player.hand = player.hand.filter( (card) => {
+                return card !== undefined;
+            });
+            this.updateHand();
             this._pile.addCard(cards);
             this._displayBSBtn();
         }
@@ -195,21 +199,19 @@ class Game {
     computerPlay(player) {
 
     }
-
     callBluff() {
 
     }
-
     _displayCardInHand(card) {
         const cardInHandEl = cardToCardEl(card);
         const index = document.querySelectorAll('#hand > li').length;
+        cardInHandEl.setAttribute('index', `${index}`);
         const num = Math.floor(this._players[0].numCardsInHand()/2) * 30;
         cardInHandEl.style.transform = `translate(${index * 30 - num}px)`;
         cardInHandEl.onclick = selectCard;
-        const parentEl = document.getElementById('hand');
-        parentEl.appendChild(cardInHandEl);
+        const hand = document.getElementById('hand');
+        hand.appendChild(cardInHandEl);
     }
-
     _displayPlayBtn() {
         let btn = document.getElementById('bsBtn');
         btn.textContent = 'Play';
@@ -217,12 +219,23 @@ class Game {
         return btn;
 
     }
-
     _displayBSBtn(){
         let btn = document.getElementById('bsBtn');
         btn.textContent = 'BS';
         btn.className = 'btn btn-light btn-outline-danger';
         return btn;
+    }
+    endGame() {
+
+    }
+    updateHand() {
+        document.getElementById('hand').remove();
+        const hand = document.createElement('ul');
+        hand.id = 'hand';
+        document.querySelector('.player-cards').appendChild(hand);
+        for (const card of this._players[0].hand) {
+            this._displayCardInHand(card);
+        }
     }
 }
 
