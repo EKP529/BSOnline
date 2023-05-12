@@ -179,13 +179,15 @@ class Game {
     playerPlay(player) {
         let btn = this._displayPlayBtn(player);
         btn.onclick = () => {
-            let cards = document.querySelectorAll('li.selected');
-            const pile = document.getElementById('pile');
-            let i = 0;
-            for (const card of cards) {
-                card.style.transform = `translate(${2*(i++)}px)`;
-                pile.appendChild(card);
-                const index = card.getAttribute('index');
+            let cardEls = document.querySelectorAll('li.selected');
+            const pileEl = document.getElementById('pile');
+            const cards = [];
+            for (const cardEl of cardEls) {
+                cards.push(cardElToCard(cardEl))
+                let i = document.querySelectorAll('#pile > li').length;
+                cardEl.style.transform = `translate(${2*(i++)}px)`;
+                pileEl.appendChild(cardEl);
+                const index = cardEl.getAttribute('index');
                 delete player.hand[+index];
             }
             player.hand = player.hand.filter( (card) => {
@@ -242,7 +244,10 @@ class Game {
 const game = new Game();
 game.play();
 
-function cardElToCard(cardEl) { return card; }
+function cardElToCard(cardEl) {
+    const data = cardEl.getAttribute('data-value').split(' ');
+    return new Card(data[0], numToVal(data[0]), data[1]);
+}
 function cardToCardEl(card) {
     const cardEl = document.createElement('li');
     cardEl.setAttribute('data-value', `${card.num} ${card.suit}`);
@@ -267,4 +272,18 @@ function delay(milliseconds) {
 
 function selectCard(e) {
     e.target.closest('li').classList.toggle('selected');
+}
+function numToVal(num) {
+    switch (num) {
+        case 'A':
+            return 14;
+        case 'K':
+            return 13;
+        case 'Q':
+            return 12;
+        case 'J':
+            return 11;
+        default:
+            return +num;
+    }
 }
