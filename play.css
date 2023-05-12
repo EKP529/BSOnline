@@ -126,58 +126,19 @@ form .btn{
 #hand > li {
     position: absolute;
     text-align: left;
-    -moz-transition: top 0.5s ease 0.1s;
-    -o-transition: top 0.5s ease 0.1s;
-    -webkit-transition: top 0.5s ease;
-    -webkit-transition-delay: 0.1s;
-    transition: top 0.5s ease 0.1s;
+    transition-delay: 0.1s, 0.2s, 0.2s;
+    transition: top 0.5s ease 0.1s, left 0.5s ease 0.2s, transform 0.5s ease 0.2s;
 }
-#hand > li:nth-child(1) {
-    transform: translate(0em, 16px) rotate(-40deg);
-}
-#hand > li:nth-child(2) {
-    transform: translate(1.6em, 11px) rotate(-34deg);
-}
-#hand > li:nth-child(3) {
-    transform: translate(3.2em, 7px) rotate(-28deg);
-}
-#hand > li:nth-child(4) {
-    transform: translate(4.8em, 4px) rotate(-22deg);
-}
-#hand > li:nth-child(5) {
-    transform: translate(6.4em, 2px) rotate(-16deg);
-}
-#hand > li:nth-child(6) {
-    transform: translate(8em, 1px) rotate(-10deg);
-}
-#hand > li:nth-child(7) {
-    transform: translate(9.6em, 1px) rotate(-4deg);
-}
-#hand > li:nth-child(8) {
-    transform: translate(11.2em, 2px) rotate(2deg);
-}
-#hand > li:nth-child(9) {
-    transform: translate(12.8em, 4px) rotate(8deg);
-}
-#hand > li:nth-child(10) {
-    transform: translate(14.4em, 7px) rotate(14deg);
-}
-#hand > li:nth-child(11) {
-    transform: translate(16em, 11px) rotate(20deg);
-}
-#hand > li:nth-child(12) {
-    transform: translate(17.6em, 16px) rotate(26deg);
-}
-#hand > li:nth-child(13) {
-    transform: translate(19.2em, 22px) rotate(32deg);
-}
-#hand > li:active {
-    left: 0;
-    top: -40px;
+#hand > li:hover{
     cursor: pointer;
-    -moz-box-shadow: inset 0 0 80px rgba(49, 14, 2, 0.6), 0 0 30px rgb(248, 116, 0);
-    -webkit-box-shadow: inset 0 0 80px rgba(49, 14, 2, 0.6), 0 0 30px rgb(248, 116, 0);
-    box-shadow: inset 0 0 80px rgba(49, 14, 2, 0.6), 0 0 30px rgb(248, 116, 0);
+}
+#hand > li.selected {
+    left: 0;
+    top: -30px;
+    box-shadow: inset 0 0 80px rgba(150, 100, 50, 0.3), 0 0 30px rgba(255, 255, 200, 0.8);
+}
+#hand:last-child{
+
 }
 #pile:before, #hand:before, #pile:after, #hand:after {
     content: "";
@@ -200,19 +161,12 @@ form .btn{
     list-style: none;
     width: 12rem;
     height: 16.8rem;
-    background-color: #fff5f1;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
+    background-color: #fff;
     border-radius: 15px;
-    -moz-box-shadow: inset 0 0 80px rgba(49, 14, 2, 0.42), 0 0 3px #f87400;
-    -webkit-box-shadow: inset 0 0 80px rgba(49, 14, 2, 0.42), 0 0 3px #f87400;
-    box-shadow: inset 0 0 80px rgba(49, 14, 2, 0.42), 0 0 3px #f87400;
-    -webkit-transform-style: preserve-3d;
+    box-shadow: inset 0 0 80px rgba(150, 100, 50, 0.5), 0 0 3px #966432;
     transform-style: preserve-3d;
-    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    -webkit-perspective: inherit;
-    perspective: inherit;
+    perspective: 1000px;
     transform: translateZ(0);
 }
 

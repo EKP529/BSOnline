@@ -125,7 +125,8 @@ class Game {
     _deck;
     _pile;
     _players = [];
-    _currPlayer;
+    _currPlayer = 0;
+    _gameOver = false;
 
     constructor() {
         this._deck = new Deck();
@@ -150,7 +151,8 @@ class Game {
         let numCards;
         let end = numCards = Math.floor((this._deck.cards.length / this._players.length));
         for (let i = 0; i < this._players.length; i++) {
-            this._players[i].hand = this._deck.cards.slice(start, end);
+            this._players[i].hand = this._deck.cards.slice(start, end)
+                .sort((a,b) => (a.val > b.val ? 1:-1));
             const playerNumCardsEl = document.querySelector(`#player${i + 1} > .cards-in-hand`);
             // await delay(1000);
             playerNumCardsEl.textContent = `${this._players[i].numCardsInHand()} cards`;
@@ -160,39 +162,96 @@ class Game {
 
         //show player's cards
         for (const card of this._players[0].hand) {
-            this._displayCard(card, 'hand');
+            this._displayCardInHand(card);
         }
     }
 
-    _displayCard(card, parentId) {
-        const cardInHandEl = document.createElement('li');
-        // cardInHandEl.style.transform
-        cardInHandEl.setAttribute('data-value', `${card.num} ${card.suit}`);
-        const pEl = document.createElement('p');
-        pEl.setAttribute('data-suit', `${card.suit}`);
-        const numEl = document.createElement('span');
-        numEl.textContent = `${card.num}`;
-        const suitEl = document.createElement('span');
-        suitEl.textContent = `${card.suit}`;
-        pEl.appendChild(numEl);
-        pEl.appendChild(suitEl);
-        cardInHandEl.appendChild(pEl);
-        const parentEl = document.getElementById(parentId);
+    play() {
+        if (this._currPlayer === 0) {
+            this.playerPlay(this._players[0]);
+        }
+        else {
+            this.computerPlay(this._players[this._currPlayer]);
+        }
+        if (this._players[this._currPlayer].numCardsInHand() === 0) {
+            this._gameOver = true;
+        }
+        this._currPlayer = ((this._currPlayer++) % this._players.length);
+    }
+    playerPlay(player) {
+        let btn = this._displayPlayBtn(player);
+        btn.onclick = () => {
+            let cards = document.querySelectorAll('li.selected');
+            const parentEl = document.getElementById('pile');
+            let i = 0;
+            for (const card of cards) {
+                card.style.transform = `translate(${2*(i++)}px)`;
+                parentEl.appendChild(card);
+            }
+            this._pile.addCard(cards);
+            this._displayBSBtn();
+        }
+    }
+    computerPlay(player) {
+
+    }
+
+    callBluff() {
+
+    }
+
+    _displayCardInHand(card) {
+        const cardInHandEl = cardToCardEl(card);
+        const index = document.querySelectorAll('#hand > li').length;
+        const num = Math.floor(this._players[0].numCardsInHand()/2) * 30;
+        cardInHandEl.style.transform = `translate(${index * 30 - num}px)`;
+        cardInHandEl.onclick = selectCard;
+        const parentEl = document.getElementById('hand');
         parentEl.appendChild(cardInHandEl);
     }
 
-    play() {}
-    playerPlay() {}
-    computerPlay() {}
-    updatePlayerCards() {}
+    _displayPlayBtn() {
+        let btn = document.getElementById('bsBtn');
+        btn.textContent = 'Play';
+        btn.className = 'btn btn-light btn-outline-success';
+        return btn;
+
+    }
+
+    _displayBSBtn(){
+        let btn = document.getElementById('bsBtn');
+        btn.textContent = 'BS';
+        btn.className = 'btn btn-light btn-outline-danger';
+        return btn;
+    }
 }
 
 const game = new Game();
+game.play();
 
+function cardElToCard(cardEl) { return card; }
+function cardToCardEl(card) {
+    const cardEl = document.createElement('li');
+    cardEl.setAttribute('data-value', `${card.num} ${card.suit}`);
+    const pEl = document.createElement('p');
+    pEl.setAttribute('data-suit', `${card.suit}`);
+    const numEl = document.createElement('span');
+    numEl.textContent = `${card.num}`;
+    const suitEl = document.createElement('span');
+    suitEl.textContent = `${card.suit}`;
+    pEl.appendChild(numEl);
+    pEl.appendChild(suitEl);
+    cardEl.appendChild(pEl);
+    return cardEl;
+}
 function delay(milliseconds) {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(true);
         }, milliseconds);
     });
+}
+
+function selectCard(e) {
+    e.target.closest('li').classList.toggle('selected');
 }
