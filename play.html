@@ -46,15 +46,20 @@
               </ul>
             </div>
             <div class="game-info">
-<!--              <span class="important"> Seconds Left: 7</span>-->
-<!--              <br/>-->
-<!--              <span class="cards-in-hand">4 cards in pile</span>-->
-<!--              <br>-->
-<!--              <br>-->
-<!--              <span> Player 2's Turn:</span>-->
-<!--              <span class="cards-in-hand">Attempted Discard:</span>-->
-<!--              <br/>-->
-<!--              <span>2 A's</span>-->
+              <div class="info">
+                <span>Currently Playing:</span>
+                <br>
+                <span id="currPlayer"></span>
+                <br>
+                <span># Cards in Pile:</span>
+                <span id="num-cards-in-pile"></span>
+                <br>
+                <span>Current Card: </span>
+                <span id="currCard"></span>
+                <br>
+                <span>Attempted Discard:</span>
+                <span id="discard"></span>
+              </div>
             </div>
             <br>
             <div class="turn-info">
@@ -71,6 +76,11 @@
         <div class="BS">
           <button class="btn btn-light btn-outline-danger" id="bsBtn" onclick="game.callBluff()">
               BS!!!
+          </button>
+        </div>
+        <div class="Play">
+          <button class="btn btn-light btn-outline-success" id="playBtn">
+              Play
           </button>
         </div>
         <div class="player">

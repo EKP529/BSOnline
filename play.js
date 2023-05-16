@@ -84,6 +84,7 @@ class Deck {
 }
 class Pile {
     _cards = [];
+    _lastPlayedCards = [];
 
     addCard(card) {
         this._cards.unshift(card);
@@ -93,6 +94,26 @@ class Pile {
         const oldCards = [...this._cards];
         this._cards = [];
         return oldCards;
+    }
+
+    get cards() {
+        return this._cards;
+    }
+
+    set cards(value) {
+        this._cards = value;
+    }
+
+    numCards() {
+        return this.cards.length;
+    }
+
+    get lastPlayedCards() {
+        return this._lastPlayedCards;
+    }
+
+    set lastPlayedCards(value) {
+        this._lastPlayedCards = value;
     }
 }
 class Player {
@@ -122,11 +143,14 @@ class Player {
     }
 }
 class Game {
+    _nums = [
+        '2','3','4','5','6','7','8','9','10','J','Q','K','A'
+    ]
     _deck;
     _pile;
     _players = [];
     _currPlayer = 0;
-    _gameOver = false;
+    _currNumIndex = 0;
 
     constructor() {
         this._deck = new Deck();
@@ -161,89 +185,121 @@ class Game {
         }
 
         //show player's cards
-        this.updateHand();
+        updateHand(this._players[0]);
     }
-    play() {
-        if (this._currPlayer === 0) {
-            this.playerPlay(this._players[0]);
+    playerPlay() {
+        this.setGameInfo();
+        const player = this._players[this._currPlayer];
+        const btn = document.getElementById('playBtn');
+        btn.onclick = async () => {
+            if (this._currPlayer === 0) {
+                let cardEls = [];
+                for (const cardEl of document.querySelectorAll('li.selected')) {
+                    cardEls.push(cardToCardEl(cardElToCard(cardEl)));
+                }
+                if (cardEls.length === 0) {
+                    return;
+                }
+                const pileEl = document.getElementById('pile');
+                const lastPlayedCards = [];
+                for (const cardEl of cardEls) {
+                    let i = this._pile.numCards();
+                    cardEl.style.transform = `translate(${2 * (i++)}px)`;
+                    pileEl.appendChild(cardEl);
+                    const card = cardElToCard(cardEl);
+                    this._pile.addCard(card);
+                    lastPlayedCards.push(card);
+                    const index = cardEl.getAttribute('index');
+                    delete player.hand[+index];
+                }
+                player.hand = player.hand.filter((card) => {
+                    return card !== undefined;
+                });
+                updateHand(player);
+                this._pile.lastPlayedCards = lastPlayedCards;
+                if (player.numCardsInHand() === 0) {
+                    await this.endGame();
+                }
+                else {
+                    this._currPlayer = (++this._currPlayer) % this._players.length;
+                    this._currNumIndex = (++this._currNumIndex) % this._nums.length;
+                    this.computerPlay(this._players[this._currPlayer]);
+                }
+            }
+        };
+    }
+    async computerPlay() {
+        document.getElementById('playBtn').onclick = null;
+        this.setGameInfo();
+        await delay(5000);
+        const player = this._players[this._currPlayer];
+        if (player.numCardsInHand() === 0) {
+            await this.endGame();
         }
         else {
-            this.computerPlay(this._players[this._currPlayer]);
-        }
-        if (this._players[this._currPlayer].numCardsInHand() === 0) {
-            this.endGame();
-            return;
-        }
-        this._currPlayer = ((this._currPlayer++) % this._players.length);
-    }
-    playerPlay(player) {
-        let btn = this._displayPlayBtn(player);
-        btn.onclick = () => {
-            let cardEls = document.querySelectorAll('li.selected');
-            const pileEl = document.getElementById('pile');
-            const cards = [];
-            for (const cardEl of cardEls) {
-                cards.push(cardElToCard(cardEl))
-                let i = document.querySelectorAll('#pile > li').length;
-                cardEl.style.transform = `translate(${2*(i++)}px)`;
-                pileEl.appendChild(cardEl);
-                const index = cardEl.getAttribute('index');
-                delete player.hand[+index];
+            this._currPlayer = (++this._currPlayer) % this._players.length;
+            this._currNumIndex = (++this._currNumIndex) % this._nums.length;
+            if (this._currPlayer === 0) {
+                this.playerPlay(this._players[this._currPlayer]);
             }
-            player.hand = player.hand.filter( (card) => {
-                return card !== undefined;
-            });
-            this.updateHand();
-            this._pile.addCard(cards);
-            this._displayBSBtn();
+            else {
+                this.computerPlay(this._players[this._currPlayer]);
+            }
         }
-    }
-    computerPlay(player) {
-
     }
     callBluff() {
 
     }
-    _displayCardInHand(card) {
-        const cardInHandEl = cardToCardEl(card);
-        const index = document.querySelectorAll('#hand > li').length;
-        cardInHandEl.setAttribute('index', `${index}`);
-        const num = Math.floor(this._players[0].numCardsInHand()/2) * 30;
-        cardInHandEl.style.transform = `translate(${index * 30 - num}px)`;
-        cardInHandEl.onclick = selectCard;
-        const hand = document.getElementById('hand');
-        hand.appendChild(cardInHandEl);
+    async endGame() {
+        document.querySelector('.game-info .info').remove();
+        const gameInfo = document.querySelector('.game-info');
+        const span = document.createElement('span');
+        const username = this._players[this._currPlayer].username;
+        span.textContent = `${username} Wins!!!`;
+        span.style.fontSize = 'x-large';
+        span.style.color = '#00a11c';
+        gameInfo.appendChild(span);
+        await delay(3000);
+        window.location.href = "lobby.html";
     }
-    _displayPlayBtn() {
-        let btn = document.getElementById('bsBtn');
-        btn.textContent = 'Play';
-        btn.className = 'btn btn-light btn-outline-success';
-        return btn;
-
-    }
-    _displayBSBtn(){
-        let btn = document.getElementById('bsBtn');
-        btn.textContent = 'BS';
-        btn.className = 'btn btn-light btn-outline-danger';
-        return btn;
-    }
-    endGame() {
-
-    }
-    updateHand() {
-        document.getElementById('hand').remove();
-        const hand = document.createElement('ul');
-        hand.id = 'hand';
-        document.querySelector('.player-cards').appendChild(hand);
-        for (const card of this._players[0].hand) {
-            this._displayCardInHand(card);
-        }
+    setGameInfo() {
+        const currPlayer = document.getElementById('currPlayer');
+        currPlayer.style.color = '#850707';
+        const username = this._players[this._currPlayer].username;
+        currPlayer.textContent = `${username}`;
+        const numCards = document.getElementById('num-cards-in-pile');
+        numCards.style.color = '#850707';
+        numCards.textContent = `${this._pile.numCards()}`;
+        const currCard = document.getElementById('currCard');
+        currCard.style.color = '#850707';
+        currCard.textContent = `${this._nums[this._currNumIndex]}`;
+        const discard = document.getElementById('discard');
+        discard.style.color = '#850707';
+        discard.textContent = `${this._pile.lastPlayedCards.length}`;
     }
 }
 
 const game = new Game();
-game.play();
-
+game.playerPlay();
+function updateHand(player) {
+    document.getElementById('hand').remove();
+    const hand = document.createElement('ul');
+    hand.id = 'hand';
+    document.querySelector('.player-cards').appendChild(hand);
+    for (const card of player.hand) {
+        displayCardInHand(card, player);
+    }
+}
+function displayCardInHand(card, player) {
+    const cardInHandEl = cardToCardEl(card);
+    const index = document.querySelectorAll('#hand > li').length;
+    cardInHandEl.setAttribute('index', `${index}`);
+    const num = Math.floor(player.numCardsInHand()/2) * 30;
+    cardInHandEl.style.transform = `translate(${index * 30 - num}px)`;
+    cardInHandEl.onclick = selectCard;
+    const hand = document.getElementById('hand');
+    hand.appendChild(cardInHandEl);
+}
 function cardElToCard(cardEl) {
     const data = cardEl.getAttribute('data-value').split(' ');
     return new Card(data[0], numToVal(data[0]), data[1]);
@@ -269,7 +325,6 @@ function delay(milliseconds) {
         }, milliseconds);
     });
 }
-
 function selectCard(e) {
     e.target.closest('li').classList.toggle('selected');
 }
