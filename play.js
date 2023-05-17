@@ -138,8 +138,8 @@ class Player {
         return this._hand.length;
     }
 
-    addToHand(cards) {
-        this._hand.push(cards);
+    addToHand(card) {
+        this._hand.push(card);
     }
 }
 class Game {
@@ -195,7 +195,8 @@ class Game {
             if (this._currPlayer === 0) {
                 let cardEls = [];
                 for (const cardEl of document.querySelectorAll('li.selected')) {
-                    cardEls.push(cardToCardEl(cardElToCard(cardEl)));
+                    const cardIndex = cardEl.getAttribute('index');
+                    cardEls.push(cardToCardEl(cardElToCard(cardEl), +cardIndex));
                 }
                 if (cardEls.length === 0) {
                     return;
@@ -281,32 +282,34 @@ class Game {
 
 const game = new Game();
 game.playerPlay();
+
 function updateHand(player) {
     document.getElementById('hand').remove();
     const hand = document.createElement('ul');
     hand.id = 'hand';
     document.querySelector('.player-cards').appendChild(hand);
-    for (const card of player.hand) {
-        displayCardInHand(card, player);
+    for (let i = 0; i < player.numCardsInHand(); i++) {
+        displayCardInHand(player, i);
     }
 }
-function displayCardInHand(card, player) {
-    const cardInHandEl = cardToCardEl(card);
-    const index = document.querySelectorAll('#hand > li').length;
-    cardInHandEl.setAttribute('index', `${index}`);
+
+function displayCardInHand(player, cardIndex) {
+    const cardInHandEl = cardToCardEl(player.hand[cardIndex], cardIndex);
     const num = Math.floor(player.numCardsInHand()/2) * 30;
-    cardInHandEl.style.transform = `translate(${index * 30 - num}px)`;
+    cardInHandEl.style.transform = `translate(${cardIndex * 30 - num}px)`;
     cardInHandEl.onclick = selectCard;
     const hand = document.getElementById('hand');
     hand.appendChild(cardInHandEl);
 }
+
 function cardElToCard(cardEl) {
     const data = cardEl.getAttribute('data-value').split(' ');
     return new Card(data[0], numToVal(data[0]), data[1]);
 }
-function cardToCardEl(card) {
+function cardToCardEl(card, cardIndex) {
     const cardEl = document.createElement('li');
     cardEl.setAttribute('data-value', `${card.num} ${card.suit}`);
+    cardEl.setAttribute('index', `${cardIndex}`);
     const pEl = document.createElement('p');
     pEl.setAttribute('data-suit', `${card.suit}`);
     const numEl = document.createElement('span');
