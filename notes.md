@@ -108,7 +108,7 @@ elements in a responsive grid.
 | flex   | Display this element's children in a flexible orientation.                                                               |
 | grid   | Display this element's children in a grid orientation.                                                                   |
 
-## Notes(5/1):
+## CSS Deliverable Takeaways(5/1):
 What I learned from the CSS Startup deliverable:
 * I learned what the `calc()` does for values
 * I learned about bootstrap limitations and debugging kinks in its use and overwriting

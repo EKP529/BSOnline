@@ -16,7 +16,7 @@ imagination becomes **reality**!
 ## Key Features:
 * Secure login over HTTPS
 * Play a game with up to 8 people
-* Interactive display that shows the cards in your hand
+* Interactive display that shows the cards in your pile
 * Display shows what other players play in realtime 
 * Record of players' wins is kept
 
@@ -36,21 +36,8 @@ What I learned from the CSS Startup deliverable:
 * I learned about display kinks between desktop/laptop and mobile; I had to change the units I used
 in order to accommodate both mobile and desktop views
 
-## Navigation Controls (5/1):
-| Navigation Controls | Description                                           |
-|---------------------|-------------------------------------------------------|
-| App controls        | User settings, payment, and help controls             |
-| Device controls     | Device specific controls such as back, next, and home |
-| Breadcrumb          | A path of the user's walk through the application     |
-| Common actions      | Direct links to locations based on the current view   |
-
-## Notes(5/1):
-* Web apps need to support [WAI-ARIA](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics) standards to support users with audio, visual, or physical
-limitations
-* HTML [page](https://htmlpreview.github.io/?https://github.com/webprogramming260/.github/blob/main/profile/javascript/introduction/introduction.html) for Javascript references
-
-## Notes(5/3):
-* [Internationalization](https://www.w3.org/standards/webdesign/i18n)
-
-## Notes(5/4):
-* [Events](https://developer.mozilla.org/en-US/docs/Web/Events)
+## Javascript Deliverable Takeaways(5/25):
+* Adjusted HTML page by getting rid of placeholders and loading data through javascript
+* Login data is saved to local storage through javascript
+* Added javascript to make the cards playable and the game functional
+* Added computer play for simple version of game
