@@ -213,8 +213,7 @@ class Game {
     //show starting game info
     this.setGameInfo();
   }
-  playerPlay() {
-    const player = this.getPlayer(this._currPlayerID);
+  playerPlay(player = this.getPlayer(0)) {
     const btn = document.getElementById('playBtn');
     btn.onclick = async () => {
       if (this.currentPlayer().playerID === 0) {
@@ -238,20 +237,13 @@ class Game {
         });
         this._pile.lastPlayed = player;
         updateHand(player);
-        if (player.numCardsInHand() === 0) {
-          await this.endGame();
-        } else {
-          this.updateCurrentPlayer();
-          this.updateCurrentCard();
-          this.setGameInfo();
-          this.computerPlay(this.currentPlayer());
-        }
+        this.endTurn(player);
       }
     };
   }
   async computerPlay(player) {
     document.getElementById('playBtn').onclick = null;
-    await delay(1000);
+    await delay(2000);
     
     //computer play mechanics start
     let cards = player.hand.filter((card) => {
@@ -278,38 +270,25 @@ class Game {
     updatePlayerCardInfo(player);
     //computer play mechanics end
     
-    if (player.numCardsInHand() === 0) {
-      await this.endGame();
-    } else {
-      this.updateCurrentPlayer();
-      this.updateCurrentCard();
-      this.setGameInfo();
-      if (this.currentPlayer().playerID === 0) {
-        this.playerPlay(this.currentPlayer());
-      }
-      else {
-        this.computerPlay(this.currentPlayer());
-      }
-    }
+    this.endTurn(player);
   }
   callBluff(player) {
     if ((this._pile.lastPlayed !== null) && (this._pile.numLastPlayedCards() !== 0)) {
       const cards = this._pile.clearPile();
       for (const card of this._pile.lastPlayedCards) {
-        if (card.num !== this.previousCard()) {
+        if (card.num !== this.currentCard()) {
           cards.forEach((card) => { this._pile.lastPlayed.addToHand(card); })
           this._pile.lastPlayedCards = [];
           updatePile(this._pile);
           this.updateCurrentPlayer(this._pile.lastPlayed.playerID);
+          this.updateCurrentCard();
           this._pile.lastPlayed = null;
           this.setGameInfo();
           if (this.currentPlayer().playerID === 0) {
             updateHand(this.currentPlayer());
-            this.playerPlay(this.currentPlayer());
           }
           else {
             updatePlayerCardInfo(this.currentPlayer());
-            this.computerPlay(this.currentPlayer());
           }
           return;
         }
@@ -319,13 +298,49 @@ class Game {
       this._pile.lastPlayed = null;
       updatePile(this._pile);
       this.updateCurrentPlayer(player.playerID);
+      this.updateCurrentCard();
       this.setGameInfo();
       if (this.currentPlayer().playerID === 0) {
         updateHand(this.currentPlayer());
-        this.playerPlay(this.currentPlayer());
       }
       else {
         updatePlayerCardInfo(this.currentPlayer());
+      }
+    }
+  }
+  computerCallsBluff() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        if (Math.random() >= 0.58) {
+          const compPlayerID = generateRandom(4, 1);
+          if (compPlayerID !== this._currPlayerID) {
+            const compPlayer = this.getPlayer(compPlayerID);
+            this.callBluff(compPlayer);
+            resolve(true);
+          }
+          else {
+            resolve(false);
+          }
+        }
+        resolve(false);
+      }, 5000);
+    });
+  }
+  async endTurn(player) {
+    this.setGameInfo();
+    const result = await this.computerCallsBluff();
+    if (player.numCardsInHand() === 0) {
+      await this.endGame();
+    } else {
+      if (result === false) {
+        this.updateCurrentPlayer();
+        this.updateCurrentCard();
+        this.setGameInfo();
+      }
+      if (this.currentPlayer().playerID === 0) {
+        this.playerPlay(this.currentPlayer());
+      }
+      else {
         this.computerPlay(this.currentPlayer());
       }
     }
@@ -340,6 +355,7 @@ class Game {
     span.style.color = '#00a11c';
     gameInfo.appendChild(span);
     await delay(3000);
+    recordWin(this.currentPlayer().username);
     window.location.href = "lobby.html";
   }
   setGameInfo() {
@@ -368,9 +384,6 @@ class Game {
   }
   currentCard() {
     return this._card[this._currCardIndex];
-  }
-  previousCard() {
-    return this._card[this._currCardIndex - 1];
   }
   currentPlayer() {
     return this.getPlayer(this._currPlayerID);
@@ -478,6 +491,41 @@ function generateRandom(max, min = 0) {
   rand = Math.floor( rand * difference);
   rand = rand + min;
   return rand;
+}
+function recordWin(username) {
+  let winRecords = [];
+  const winRecordsText = localStorage.getItem('winRecords');
+  if (winRecordsText) {
+    winRecords = JSON.parse(winRecordsText);
+  }
+  winRecords = updateWinRecords(username, winRecords);
+  localStorage.setItem('winRecords', JSON.stringify(winRecords));
+}
+function updateWinRecords(username, winRecords) {
+  const date = new Date().toLocaleDateString();
+  const record = winRecords.filter((record) => {
+    return record.username === username;
+  });
+  const wins = record.length !== 0 ? record[0].wins + 1 : 1;
+  const newRecord = { username: username, wins: wins, date: date };
+  
+  let found = false;
+  for (const [i, prevRecord] of winRecords.entries()) {
+    if (wins > prevRecord.wins) {
+      winRecords.splice(i, 0, newRecord);
+      found = true;
+      break;
+    }
+  }
+  
+  if (!found) {
+    winRecords.push(newRecord);
+  }
+  if (winRecords.length > 10) {
+    winRecords.length = 10;
+  }
+  
+  return winRecords;
 }
 
 const game = new Game();

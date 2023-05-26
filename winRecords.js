@@ -33,9 +33,9 @@ function loadWinRecords() {
             const nameTdEl = document.createElement('td');
             const winsTdEl = document.createElement('td');
             const dateTdEl = document.createElement('td');
-
+    
             positionTdEl.textContent = i + 1;
-            nameTdEl.textContent = score.name;
+            nameTdEl.textContent = score.username;
             winsTdEl.textContent = score.wins;
             dateTdEl.textContent = score.date;
 

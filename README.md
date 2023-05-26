@@ -41,3 +41,5 @@ in order to accommodate both mobile and desktop views
 * Login data is saved to local storage through javascript
 * Added javascript to make the cards playable and the game functional
 * Added computer play for simple version of game
+* Added win records functionality
+* Added promise functionality to make computer call 'BS'
