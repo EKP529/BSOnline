@@ -492,40 +492,52 @@ function generateRandom(max, min = 0) {
   rand = rand + min;
   return rand;
 }
-function recordWin(username) {
+async function recordWin(username) {
+  const date = new Date().toLocaleDateString();
   let winRecords = [];
   const winRecordsText = localStorage.getItem('winRecords');
   if (winRecordsText) {
     winRecords = JSON.parse(winRecordsText);
   }
-  winRecords = updateWinRecords(username, winRecords);
-  localStorage.setItem('winRecords', JSON.stringify(winRecords));
-}
-function updateWinRecords(username, winRecords) {
-  const date = new Date().toLocaleDateString();
   const record = winRecords.filter((record) => {
     return record.username === username;
   });
   const wins = record.length !== 0 ? record[0].wins + 1 : 1;
   const newRecord = { username: username, wins: wins, date: date };
   
-  let found = false;
+  try {
+    const response = await fetch('/api/winRecord', {
+      method: 'POST',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify(newRecord),
+    });
+    
+    // Store what the service gave us as the high scores
+    const scores = await response.json();
+    localStorage.setItem('winRecords', JSON.stringify(scores));
+  } catch {
+    // If there was an error then just track scores locally
+    updateLocalWinRecords(newRecord, winRecords);
+  }
+}
+function updateLocalWinRecords(newRecord, winRecords) {
+  let add = false;
   for (const [i, prevRecord] of winRecords.entries()) {
-    if (wins > prevRecord.wins) {
+    if (newRecord.wins > prevRecord.wins) {
       winRecords.splice(i, 0, newRecord);
-      found = true;
+      add = true;
       break;
     }
   }
   
-  if (!found) {
+  if (!add) {
     winRecords.push(newRecord);
   }
   if (winRecords.length > 10) {
     winRecords.length = 10;
   }
   
-  return winRecords;
+  localStorage.setItem('winRecords', JSON.stringify(winRecords));
 }
 
 const game = new Game();
