@@ -43,3 +43,9 @@ in order to accommodate both mobile and desktop views
 * Added computer play for simple version of game
 * Added win records functionality
 * Added promise functionality to make computer call 'BS'
+
+## Service Deliverable Takeaways(6/1):
+* all static files are now loaded up through node.js static express middleware
+* win records now displayed through service endpoints and node.js
+* Quote from third party endpoint is now displayed on home/login screen with additional styling
+* Need to correct win record logic in future iteration to stop duplicate usernames when players increase their wins
