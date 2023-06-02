@@ -502,6 +502,9 @@ async function recordWin(username) {
   const record = winRecords.filter((record) => {
     return record.username === username;
   });
+  winRecords = winRecords.filter((record) => {
+    return record.username !== username;
+  });
   const wins = record.length !== 0 ? record[0].wins + 1 : 1;
   const newRecord = { username: username, wins: wins, date: date };
   

@@ -36,6 +36,9 @@ app.listen(port, () => {
 
 let winRecords = [];
 function updateWinRecords(newRecord, winRecords) {
+  winRecords = winRecords.filter((record) => {
+    return record.username !== newRecord.username;
+  });
   let found = false;
   for (const [i, prevRecord] of winRecords.entries()) {
     if (newRecord.wins > prevRecord.wins) {
