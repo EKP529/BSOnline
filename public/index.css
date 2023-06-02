@@ -61,6 +61,26 @@ menu .nav-item {
     padding: 0 0.3em;
 }
 
+.quote-box {
+    margin-top: 6em;
+    padding: 0.5em;
+    border-top: solid white thin;
+    border-radius: 50px;
+}
+
+.quote {
+    font-style: italic;
+}
+
+.author {
+    font-weight: bold;
+    text-align: right;
+}
+
+.author::before {
+    content: " - ";
+}
+
 @media (max-height: 600px) {
     header {
         display: none;
