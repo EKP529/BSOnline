@@ -1,7 +1,7 @@
 localStorage.setItem('loggedIn', 'f');
 
 (async () => {
-  const username = localStorage.getItem('userName');
+  const username = localStorage.getItem('username');
   if (username) {
     document.querySelector('#playerName').textContent = username;
     setDisplay('loginControls', 'none');
