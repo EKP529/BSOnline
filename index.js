@@ -40,6 +40,19 @@ apiRouter.post('/auth/create', async (req, res) => {
   }
 });
 
+// GetAuth token for the provided credentials
+apiRouter.post('/auth/login', async (req, res) => {
+  const user = await db.getUser(req.body.username);
+  if (user) {
+    if (await bcrypt.compare(req.body.password, user.password)) {
+      setAuthCookie(res, user.token);
+      res.send({ id: user._id });
+      return;
+    }
+  }
+  res.status(401).send({ msg: 'Unauthorized' });
+});
+
 // GetWinRecords
 apiRouter.get('/winRecords', async (req, res) => {
   const winRecords = await db.getWinRecords();
