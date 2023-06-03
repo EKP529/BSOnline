@@ -39,7 +39,7 @@ main h2{
     border-radius: 50px;
     width: 350px;
 }
-main p{
+main h4{
     margin: 0.75em;
 }
 footer {
@@ -63,7 +63,7 @@ menu .nav-item {
 
 .quote-box {
     margin-top: 4em;
-    padding: 0.5em;
+    padding: 1em;
     border-top: solid white thin;
     border-radius: 50px;
 }
@@ -80,7 +80,11 @@ menu .nav-item {
 .author::before {
     content: " - ";
 }
-
+#playerName {
+    /*color: rgb(66, 0, 0);*/
+    font-size: 1.5em;
+    padding: 0.5em;
+}
 @media (max-height: 600px) {
     header {
         display: none;

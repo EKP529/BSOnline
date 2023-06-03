@@ -36,13 +36,32 @@
     <main class="container-fluid text-center">
       <div>
         <h2>Welcome</h2>
-        <p>Login to Play</p>
-        <div>
+        <!-- Displayed when needing authentication -->
+        <div id="loginControls" style="display: none">
+          <h4>Login to Play</h4>
           <input type="text" class="input-group-text" id="username" placeholder="Enter Username Here..." />
           <input type="text" class="input-group-text" id="password" placeholder="Enter Password Here..." />
-          <button type="submit" class="btn btn-light btn-outline-dark" id="login" onclick="login()">Login</button>
+          <button type="button" class="btn btn-light btn-outline-dark" id="login" onclick="login()">Login</button>
+          <button type="button" class="btn btn-light btn-outline-dark" id="register" onclick="register()">Register</button>
+        </div>
+        <!-- Displayed when ready to play -->
+        <div id="playControls" style="display: none">
+          <div id="playerName"></div>
+          <button type="button" class="btn btn-light btn-outline-success" onclick="play()">Play</button>
+          <button type="button" class="btn btn-danger btn-outline-light" onclick="logout()">Logout</button>
         </div>
         <div id="quote" class="quote-box"></div>
+      </div>
+      <!-- Error dialog -->
+      <div class="modal fade" id="msgModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content text-dark">
+            <div class="modal-body">error message here</div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
     <footer class="bg-dark text-muted">
