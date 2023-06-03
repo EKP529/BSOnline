@@ -48,3 +48,9 @@ in order to accommodate both mobile and desktop views
 * all static files are now loaded up through node.js static express middleware
 * win records now displayed through service endpoints and node.js
 * Quote from third party endpoint is now displayed on home/login screen with additional styling
+
+## DB Deliverable Takeaways(6/3):
+* Added dbConfig.json file to store database credentials for database functionality (w/o uploading to repo)
+* Added database.js file with database functions 
+* Edited index.js file to use database functions from database.js file in service endpoints
+* Win record data is now stored and persisted in mongodb database 
