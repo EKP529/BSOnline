@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const db = require('./dbConfig.json');
 
 // The service port. In production the frontend code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
@@ -15,13 +16,15 @@ const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 // GetWinRecords
-apiRouter.get('/winRecords', (req, res) => {
+apiRouter.get('/winRecords', async (req, res) => {
+  const winRecords = await db.getWinRecords();
   res.send(winRecords);
 });
 
 // SubmitWinRecord
-apiRouter.post('/winRecord', (req, res) => {
-  winRecords = updateWinRecords(req.body, winRecords);
+apiRouter.post('/winRecord', async (req, res) => {
+  db.addWinRecord(req.body);
+  const winRecords = await db.getWinRecords();
   res.send(winRecords);
 });
 
@@ -33,26 +36,3 @@ app.use((_req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-
-let winRecords = [];
-function updateWinRecords(newRecord, winRecords) {
-  winRecords = winRecords.filter((record) => {
-    return record.username !== newRecord.username;
-  });
-  let found = false;
-  for (const [i, prevRecord] of winRecords.entries()) {
-    if (newRecord.wins > prevRecord.wins) {
-      winRecords.splice(i, 0, newRecord);
-      found = true;
-      break;
-    }
-  }
-  if (!found) {
-    winRecords.push(newRecord);
-  }
-  if (winRecords.length > 10) {
-    winRecords.length = 10;
-  }
-  
-  return winRecords;
-}
