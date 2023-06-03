@@ -59,6 +59,16 @@ apiRouter.delete('/auth/logout', (req, res) => {
   res.status(204).end();
 });
 
+// GetUser returns information about a user
+apiRouter.get('/user/:username', async (req, res) => {
+  const user = await db.getUser(req.params.username);
+  if (user) {
+    const token = req?.cookies.token;
+    res.send({ username: user.username, authenticated: token === user.token });
+    return;
+  }
+  res.status(404).send({ msg: 'Unknown' });
+});
 
 // GetWinRecords
 apiRouter.get('/winRecords', async (req, res) => {
