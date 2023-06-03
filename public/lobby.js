@@ -9,7 +9,7 @@ class Lobby{
     }
 
     getUserName() {
-        return localStorage.getItem('userName') ?? 'Mystery player';
+        return localStorage.getItem('username') ?? 'Mystery player';
     }
     async getOpponents() {
         let opps = [];
