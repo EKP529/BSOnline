@@ -515,7 +515,7 @@ async function recordWin(username) {
       body: JSON.stringify(newRecord),
     });
     
-    // Store what the service gave us as the high scores
+    // Store what the service gave us as the win records
     const scores = await response.json();
     localStorage.setItem('winRecords', JSON.stringify(scores));
   } catch {

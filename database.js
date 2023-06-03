@@ -16,6 +16,7 @@ const playerRecords = db.collection('playerRecords');
 });
 
 async function addWinRecord(record) {
+  await playerRecords.findOneAndDelete({username:`${record.username}`});
   return await playerRecords.insertOne(record);
 }
 
