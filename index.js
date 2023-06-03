@@ -70,6 +70,20 @@ apiRouter.get('/user/:username', async (req, res) => {
   res.status(404).send({ msg: 'Unknown' });
 });
 
+// secureApiRouter verifies credentials for endpoints
+let secureApiRouter = express.Router();
+apiRouter.use(secureApiRouter);
+
+secureApiRouter.use(async (req, res, next) => {
+  let authToken = req.cookies[authCookieName];
+  const user = await db.getUserByToken(authToken);
+  if (user) {
+    next();
+  } else {
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
+});
+
 // GetWinRecords
 apiRouter.get('/winRecords', async (req, res) => {
   const winRecords = await db.getWinRecords();
@@ -81,6 +95,11 @@ apiRouter.post('/winRecord', async (req, res) => {
   db.addWinRecord(req.body);
   const winRecords = await db.getWinRecords();
   res.send(winRecords);
+});
+
+// Default error handler
+app.use(function (err, req, res, next) {
+  res.status(500).send({ type: err.name, message: err.message });
 });
 
 // Return the application's default page if the path is unknown
