@@ -3,6 +3,7 @@ import {BrowserRouter, NavLink, Route, Routes} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 import {Login} from './login/login';
+import { AuthState } from './login/authState';
 import {Lobby} from './lobby/lobby';
 import {Play} from './play/play';
 import {WinRecords} from './winRecords/winRecords';
@@ -16,6 +17,9 @@ function NotFound() {
   );
 }
 export default function App() {
+  const [username, setUsername] = React.useState(localStorage.getItem('userName') || '');
+  const currentAuthState = username ? AuthState.Authenticated : AuthState.Unauthenticated;
+  const [authState, setAuthState] = React.useState(currentAuthState);
   return (
     <BrowserRouter>
       <div className="app bg-light">
@@ -36,7 +40,17 @@ export default function App() {
           </nav>
         </header>
         <Routes className='routes'>
-          <Route path='/' element={<Login></Login>}></Route>
+          <Route path='/' element={
+            <Login
+              username={username}
+              authState={authState}
+              onAuthChange={(username, authState) => {
+                setAuthState(authState);
+                setUsername(username);
+              }}
+            ></Login>
+          } exact>
+          </Route>
           <Route path='/winRecords' element={<WinRecords></WinRecords>}></Route>
           <Route path='/about' element={<About></About>}></Route>
           <Route path='*' element={<NotFound></NotFound>}></Route>
