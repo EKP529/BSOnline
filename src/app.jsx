@@ -3,7 +3,7 @@ import {BrowserRouter, NavLink, Route, Routes} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 import {Login} from './login/login';
-import { AuthState } from './login/authState';
+import {AuthState} from './login/authState';
 import {Lobby} from './lobby/lobby';
 import {Play} from './play/play';
 import {WinRecords} from './winRecords/winRecords';
@@ -51,6 +51,8 @@ export default function App() {
             ></Login>
           } exact>
           </Route>
+          <Route path='/lobby' element={<Lobby></Lobby>}></Route>
+          <Route path='/play' element={<Play></Play>}></Route>
           <Route path='/winRecords' element={<WinRecords></WinRecords>}></Route>
           <Route path='/about' element={<About></About>}></Route>
           <Route path='*' element={<NotFound></NotFound>}></Route>
