@@ -1,39 +1,44 @@
 import React from "react";
-import './login.css'
-export function Login() {
+import './login.css';
+import { Unauthenticated } from './unauthenticated';
+import { Authenticated } from './authenticated';
+import { AuthState } from './authState';
+
+export function Login({username, authState, onAuthChange}) {
+  const [quote, setQuote] = React.useState('Loading...');
+  const [quoteAuthor, setQuoteAuthor] = React.useState('unknown');
+  
+  // We only want this to render the first time the component is created, so we provide an empty dependency list.
+  React.useEffect(() => {
+    fetch('https://api.quotable.io/random')
+      .then((response) => response.json())
+      .then((data) => {
+        setQuote(data.content);
+        setQuoteAuthor(data.author);
+      })
+      .catch();
+  }, []);
+  
   return (
     <main className="container-fluid text-center">
-      Hello!!
-      {/*<div>*/}
-      {/*  <h2>Welcome</h2>*/}
-      {/*  <!-- Displayed when needing authentication -->*/}
-      {/*  <div id="loginControls" style="display: none">*/}
-      {/*    <h4>Login to Play</h4>*/}
-      {/*    <input type="text" className="input-group-text" id="username" placeholder="Enter Username Here..."/>*/}
-      {/*    <input type="text" className="input-group-text" id="password" placeholder="Enter Password Here..."/>*/}
-      {/*    <button type="button" className="btn btn-light btn-outline-dark" id="login" onClick="login()">Login</button>*/}
-      {/*    <button type="button" className="btn btn-light btn-outline-dark" id="register" onClick="register()">Register*/}
-      {/*    </button>*/}
-      {/*  </div>*/}
-      {/*  <!-- Displayed when ready to play -->*/}
-      {/*  <div id="playControls" style="display: none">*/}
-      {/*    <div id="playerName"></div>*/}
-      {/*    <button type="button" className="btn btn-light btn-outline-success" onClick="play()">Play</button>*/}
-      {/*    <button type="button" className="btn btn-danger btn-outline-light" onClick="logout()">Logout</button>*/}
-      {/*  </div>*/}
-      {/*  <div id="quote" className="quote-box"></div>*/}
-      {/*</div>*/}
-      {/*<!-- Error dialog -->*/}
-      {/*<div className="modal fade" id="msgModal" tabIndex="-1">*/}
-      {/*  <div className="modal-dialog modal-dialog-centered">*/}
-      {/*    <div className="modal-content text-dark">*/}
-      {/*      <div className="modal-body">error message here</div>*/}
-      {/*      <div className="modal-footer">*/}
-      {/*        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>*/}
-      {/*      </div>*/}
-      {/*    </div>*/}
-      {/*  </div>*/}
-      {/*</div>*/}
+      <div>
+        {authState !== AuthState.Unknown && <h1>Welcome <br/>to <br/>BSOnline!</h1>}
+        {authState === AuthState.Authenticated && (
+          <Authenticated username={username} onLogout={() => onAuthChange(username, AuthState.Unauthenticated)} />
+        )}
+        {authState === AuthState.Unauthenticated && (
+          <Unauthenticated
+            userName={username}
+            onLogin={(loginUserName) => {
+              onAuthChange(loginUserName, AuthState.Authenticated);
+            }}
+          />
+        )}
+      </div>
+      <div id="quote" className='quote-box'>
+        <p className='quote'>{quote}</p>
+        <p className='author'>{quoteAuthor}</p>
+      </div>
     </main>
   );
 }
