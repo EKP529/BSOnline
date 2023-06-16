@@ -8,7 +8,7 @@
     min-width: 375px;
 }
 header {
-    flex: 0 80px;
+    flex: 0 100px;
 }
 header menu {
     flex: 1;

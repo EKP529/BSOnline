@@ -29,5 +29,8 @@ export function randomUsername(){
   if ( Math.random() > 0.5 ) {
     finalName += nameList[Math.floor( Math.random() * nameList.length )];
   }
+  if (finalName.length > 12) {
+    finalName = finalName.slice(0, 12);
+  }
   return finalName;
 }

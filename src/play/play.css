@@ -1,15 +1,7 @@
 *{
     font-family: "Sedgwick Ave Display", serif;
 }
-body{
-    background: #006e12 linear-gradient(0, #00a11c, #8d0000);
-    display: flex;
-    flex-direction: column;
-    min-width: 375px;
-}
-header {
-    flex: 0 60px;
-}
+
 main {
     flex: 1 calc(145vh - 110px);
     display: flex;
@@ -64,6 +56,7 @@ footer span {
     height: 50px;
     background-color: #fff5f1;
     border: black solid thin;
+    word-wrap: break-word;
 }
 .left-players{
     position: absolute; left: 1px; top: 55vh;
@@ -93,7 +86,7 @@ footer span {
     margin-top: 80px;
     box-sizing: border-box;
     width: 175px;
-    height: 160px;
+    height: 225px;
     background-color: #fff5f1;
     border: black solid thin;
 }

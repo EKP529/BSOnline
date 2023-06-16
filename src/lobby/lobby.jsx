@@ -2,6 +2,7 @@ import React from "react";
 import './lobby.css';
 import './username'
 import Button from "react-bootstrap/Button";
+import { useNavigate } from 'react-router-dom';
 import {randomUsername} from "./username";
 
 function delay(milliseconds) {
@@ -12,6 +13,7 @@ function delay(milliseconds) {
   });
 }
 export function Lobby() {
+  const navigate = useNavigate();
   const opps = [
     'Waiting on player...',
     'Waiting on player...',
@@ -25,7 +27,7 @@ export function Lobby() {
       setPlayer(localStorage.getItem('username') ?? 'Mystery player');
       let i = 0;
       for (const el of document.querySelectorAll('.opponent > .username')) {
-        await delay(2000);
+        await delay(1000);
         const username = randomUsername();
         opps[i] = username;
         el.textContent = username;
