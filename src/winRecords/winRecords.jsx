@@ -6,30 +6,20 @@ export function WinRecords() {
   
   // Demonstrates calling a service asynchronously so that
   // React can properly update state objects with the results.
-  React.useEffect(async () => {
-    try {
-      const response = fetch('/api/scores');
-      setWinRecords(await response.json());
-      localStorage.setItem('winRecords', JSON.stringify(winRecords));
-    }
-    catch {
-      // If there was an error then just use the last saved records
-      const winRecordsText = localStorage.getItem('winRecords');
-      if (winRecordsText) {
-        setWinRecords(JSON.parse(winRecordsText));
-      }
-    }
-      // .then((response) => response.json())
-      // .then((scores) => {
-      //   setScores(scores);
-      //   localStorage.setItem('scores', JSON.stringify(scores));
-      // })
-      // .catch(() => {
-      //   const scoresText = localStorage.getItem('scores');
-      //   if (scoresText) {
-      //     setScores(JSON.parse(scoresText));
-      //   }
-      // });
+  React.useEffect(() => {
+    fetch('/api/winRecords')
+      .then((response) => response.json())
+      .then((winRecords) => {
+        setWinRecords(winRecords);
+        localStorage.setItem('winRecords', JSON.stringify(winRecords));
+      })
+      .catch(() => {
+        // If there was an error then just use the last saved records
+        const winRecordsText = localStorage.getItem('winRecords');
+        if (winRecordsText) {
+          setWinRecords(JSON.parse(winRecordsText));
+        }
+      });
   }, []);
   
   // Demonstrates rendering an array with React
