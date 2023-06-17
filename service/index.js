@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Serve up the frontend static content hosting
-app.use(express.static('public'));
+app.use(express.static('.'));
 
 // Trust headers that are forwarded from the proxy so we can determine IP addresses
 app.set('trust proxy', true);

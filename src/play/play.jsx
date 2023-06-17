@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import './play.css'
 import Button from "react-bootstrap/Button";
 import { useNavigate } from 'react-router-dom';
@@ -175,8 +175,10 @@ class Game {
   _players = [];
   _currPlayerID = 0;
   _currCardIndex = 0;
+  navigate;
   
-  constructor() {
+  constructor(navigate) {
+    this.navigate = navigate;
     this._deck = new Deck();
     this._pile = new Pile();
     
@@ -362,12 +364,9 @@ class Game {
     gameInfo.appendChild(span);
     //await delay(3000);
     recordWin(this.currentPlayer().username);
-    function leaveGame() {
-      const navigate = useNavigate();
-      navigate('/lobby');
-    }
-    leaveGame();
+    this.navigate('/lobby');
   }
+  
   setGameInfo() {
     const currPlayer = document.getElementById('currPlayer');
     currPlayer.style.color = '#850707';
@@ -552,12 +551,11 @@ function updateLocalWinRecords(newRecord, winRecords) {
   
   localStorage.setItem('winRecords', JSON.stringify(winRecords));
 }
-
 export function Play() {
   const navigate = useNavigate();
   
-  React.useEffect(() => {
-    const game = new Game();
+  useEffect(() => {
+    const game = new Game(navigate);
     game.playerPlay();
   }, []);
   

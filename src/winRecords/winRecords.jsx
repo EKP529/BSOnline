@@ -7,19 +7,22 @@ export function WinRecords() {
   // Demonstrates calling a service asynchronously so that
   // React can properly update state objects with the results.
   React.useEffect(() => {
-    fetch('/api/winRecords')
-      .then((response) => response.json())
-      .then((winRecords) => {
-        setWinRecords(winRecords);
+    async function getRecords() {
+      try {
+        const response = await fetch('/api/winRecords');
+        const records = await response.json();
+        setWinRecords(records);
         localStorage.setItem('winRecords', JSON.stringify(winRecords));
-      })
-      .catch(() => {
+      }
+      catch {
         // If there was an error then just use the last saved records
         const winRecordsText = localStorage.getItem('winRecords');
         if (winRecordsText) {
           setWinRecords(JSON.parse(winRecordsText));
         }
-      });
+      }
+    }
+    getRecords();
   }, []);
   
   // Demonstrates rendering an array with React
@@ -28,9 +31,9 @@ export function WinRecords() {
     for (const [i, record] of winRecords.entries()) {
       winRecordsRows.push(
         <tr key={i}>
-          <td>{i}</td>
-          <td>{record.name.split('@')[0]}</td>
-          <td>{record.score}</td>
+          <td>{i+1}</td>
+          <td>{record.username}</td>
+          <td>{record.wins}</td>
           <td>{record.date}</td>
         </tr>
       );
