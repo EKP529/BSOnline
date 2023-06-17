@@ -54,3 +54,10 @@ in order to accommodate both mobile and desktop views
 * Added database.js file with database functions 
 * Edited index.js file to use database functions from database.js file in service endpoints
 * Win record data is now stored and persisted in mongodb database 
+
+## React Deliverable Takeaways(6/16):
+* Moved over js and html functionality to jsx (React) functionality 
+* User React.useEffect to achieve functionality on render for components
+* Persisted await/async functionality through React conversion
+* Persisted header and footer while swapping main component to achieve single page functionality
+* Added in npm package for generating usernames for computer players
