@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Serve up the frontend static content hosting
-app.use(express.static('.'));
+app.use(express.static('public'));
 
 // Trust headers that are forwarded from the proxy so we can determine IP addresses
 app.set('trust proxy', true);
@@ -104,7 +104,7 @@ app.use(function (err, req, res, next) {
 
 // Return the application's default page if the path is unknown
 app.use((_req, res) => {
-  res.sendFile('login.html', { root: 'public' });
+  res.sendFile('index.html', { root: 'public' });
 });
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
